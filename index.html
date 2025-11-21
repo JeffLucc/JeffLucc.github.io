@@ -38,7 +38,7 @@
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         sans-serif;
-      background: radial-gradient(circle at top, #1e293b 0, var(--bg-soft) 55%);
+      background: radial-gradient(circle at top, var(--bg-elevated) 0, var(--bg-soft) 55%);
       color: var(--text);
       line-height: 1.6;
       transition: background 0.3s ease, color 0.3s ease;
@@ -64,6 +64,16 @@
         rgba(15, 23, 42, 0.76),
         transparent
       );
+    }
+
+    body.light header {
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.96),
+        rgba(244, 244, 245, 0.9),
+        transparent
+      );
+      border-bottom: 1px solid rgba(148, 163, 184, 0.35);
     }
 
     .header-inner {
@@ -168,13 +178,23 @@
       border-radius: 22px;
       background: linear-gradient(
         135deg,
-        rgba(56, 189, 248, 0.18),
+        var(--accent-soft),
         rgba(15, 23, 42, 0.96)
       );
       border: 1px solid rgba(148, 163, 184, 0.35);
       box-shadow: 0 18px 40px rgba(15, 23, 42, 0.7);
       position: relative;
       overflow: hidden;
+    }
+
+    body.light .hero {
+      background: linear-gradient(
+        135deg,
+        var(--accent-soft),
+        #ffffff
+      );
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.16);
+      border-color: rgba(148, 163, 184, 0.4);
     }
 
     .hero::after {
@@ -229,6 +249,10 @@
       backdrop-filter: blur(8px);
     }
 
+    body.light .tag-pill {
+      background: #ffffffdd;
+    }
+
     .hero-highlight {
       font-size: 0.82rem;
       padding: 0.5rem 0.75rem;
@@ -239,6 +263,10 @@
       display: flex;
       flex-direction: column;
       gap: 0.4rem;
+    }
+
+    body.light .hero-highlight {
+      background: #f9fafb;
     }
 
     .hero-highlight strong {
@@ -357,6 +385,10 @@
       gap: 0.5rem;
     }
 
+    body.light .image-slot {
+      background: #f1f5f9;
+    }
+
     .image-slot span.label {
       font-weight: 500;
       color: var(--accent);
@@ -370,8 +402,8 @@
       border: 1px solid rgba(148, 163, 184, 0.4);
     }
 
-    body.light .image-slot {
-      background: #f1f5f9;
+    body.light .image-slot code {
+      background: #e5e7eb;
     }
 
     .list-compact {
@@ -529,7 +561,7 @@
       </div>
     </section>
 
-    <!-- About Me -->
+    <!-- About Me (shorter) -->
     <section id="about" class="section fade-in">
       <div class="section-header">
         <div class="section-title">
@@ -542,29 +574,22 @@
       </div>
 
       <div class="card">
-        <!-- TODO: This is your main About Me paragraph. Adjust wording, length, and emphasis as needed. -->
+        <!-- TODO: Adjust wording if you want it even tighter or more casual. -->
         <p>
-          I’m an Electrical Engineering student at York University with a technical foundation that started in
-          astrophysics and evolved into building and analyzing real-world systems. That path has given me a habit of
-          thinking in models first – from physical systems to software architectures – and then validating those models
-          with data and experimentation.
+          I’m an Electrical Engineering student at York University with an early foundation in astrophysics. That mix
+          pushed me toward thinking in models first – whether I’m working with circuits, power systems, or software –
+          and then validating those models with data and experiments.
         </p>
         <p>
-          On the hardware side, I’ve worked with electronic circuits, power systems, and renewable energy models, using
-          tools like ETAP, MATLAB, LTSpice/PSPICE, and Simulink. I’ve designed and analyzed systems such as FIR filters
-          for digital audio denoising, infrared heart rate monitors, and power-flow and contingency studies on
-          transmission networks. On the software side, I’m comfortable in C/C++, Java, Python, and MATLAB, and I enjoy
-          writing code that makes technical workflows repeatable and easier to reason about.
+          I’ve worked on digital audio filters, infrared heart-rate monitoring circuits, and power-flow and contingency
+          analysis using tools like MATLAB, Simulink, LTSpice/PSPICE, and ETAP. On the software side, I’m comfortable in
+          C/C++, Java, Python, and MATLAB, and I like using code to make technical workflows more consistent and easier
+          to repeat.
         </p>
         <p>
-          Outside formal coursework, I’ve built custom desktop computers since I was a teenager and I keep a strong
-          interest in how hardware, operating systems, and applications interact. That background makes me very
-          comfortable debugging, benchmarking, and thinking about performance, reliability, and long-term maintainability.
-        </p>
-        <p>
-          I like working on teams where people are honest about constraints, deliberate about trade-offs, and willing to
-          share context. I care about writing documentation that future teammates can actually use and building tools
-          that reduce friction rather than adding more steps to a process.
+          Outside the lab, I’ve built custom desktop PCs for years, which makes debugging and performance tuning feel
+          familiar rather than intimidating. I care about clear reasoning, honest trade-offs, and documentation that
+          future teammates can actually use.
         </p>
 
         <div class="image-slot">
@@ -580,7 +605,7 @@
       </div>
     </section>
 
-    <!-- Career Section -->
+    <!-- Career Section (unchanged) -->
     <section id="career" class="section fade-in">
       <div class="section-header">
         <div class="section-title">
