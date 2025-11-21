@@ -90,8 +90,8 @@
     }
 
     .avatar-placeholder {
-      width: 52px;
-      height: 52px;
+      width: 60px;
+      height: 60px;
       border-radius: 999px;
       border: 2px solid var(--accent-soft);
       overflow: hidden;
@@ -143,7 +143,6 @@
       transform: translateY(-1px);
     }
 
-    /* LinkedIn icon in nav */
     .nav-social {
       display: flex;
       align-items: center;
@@ -399,7 +398,7 @@
     }
 
     .image-slot {
-      margin-top: 0.6rem;
+      margin-top: 0.8rem;
       border-radius: 12px;
       border: 1px dashed rgba(148, 163, 184, 0.7);
       background: radial-gradient(
@@ -408,33 +407,25 @@
         rgba(15, 23, 42, 0.95)
       );
       padding: 0.8rem;
-      font-size: 0.8rem;
-      color: var(--text-muted);
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 0.5rem;
+      justify-content: center;
     }
 
     body.light .image-slot {
       background: #f1f5f9;
     }
 
-    .image-slot span.label {
-      font-weight: 500;
-      color: var(--accent);
+    .image-slot img {
+      max-width: 100%;
+      width: 190px;
+      border-radius: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.6);
     }
 
-    .image-slot code {
-      font-size: 0.78rem;
-      background: rgba(15, 23, 42, 0.9);
-      padding: 0.12rem 0.35rem;
-      border-radius: 6px;
-      border: 1px solid rgba(148, 163, 184, 0.4);
-    }
-
-    body.light .image-slot code {
-      background: #e5e7eb;
+    body.light .image-slot img {
+      box-shadow: 0 10px 18px rgba(15, 23, 42, 0.16);
     }
 
     .list-compact {
@@ -566,7 +557,7 @@
         </div>
         <div class="brand-text">
           <h1>Jeffery Lucchetta</h1>
-          <p>Electrical Engineering Student &amp; Software Developer in Training</p>
+          <p>Electrical Engineering Student and Software Developer in Training</p>
         </div>
       </div>
       <nav>
@@ -574,7 +565,6 @@
         <a href="#career">Career</a>
         <a href="#resume">Resume</a>
 
-        <!-- LinkedIn icon button -->
         <a
           class="nav-social"
           href="https://www.linkedin.com/in/jefferylucchetta/"
@@ -603,21 +593,21 @@
             Building systems that connect hardware, software, and people.
           </h2>
           <p class="hero-subtitle">
-            I’m an Electrical Engineering student at York University with a background in astrophysics,
+            I am an Electrical Engineering student at York University with a background in astrophysics,
             hands-on experience designing circuits and power systems, and a growing focus on
             software tooling and automation in financial technology.
           </p>
           <div class="hero-tags">
-            <span class="tag-pill">Electrical Engineering @ York University</span>
-            <span class="tag-pill">Scotiabank – Global Wealth Solutions (Intern)</span>
-            <span class="tag-pill">Digital Design &amp; Power Systems</span>
+            <span class="tag-pill">Electrical Engineering at York University</span>
+            <span class="tag-pill">Scotiabank, Global Wealth Operations (Intern)</span>
+            <span class="tag-pill">Digital Design and Power Systems</span>
             <span class="tag-pill">Python • MATLAB • C/C++ • Verilog</span>
           </div>
         </div>
         <div class="hero-highlight">
           <strong>// Snapshot</strong>
           <div>
-            • Astrophysics foundation, transitioning into applied electrical engineering.<br />
+            • Astrophysics foundation that led into applied electrical engineering.<br />
             • Built and tuned custom PCs since high school, now designing circuits and embedded systems.<br />
             • Experience with signal processing, power-flow analysis, and automation to support real-world decisions.
           </div>
@@ -639,32 +629,21 @@
 
       <div class="card">
         <p>
-          I’m an Electrical Engineering student at York University with an early foundation in astrophysics. That mix
-          pushed me toward thinking in models first – whether I’m working with circuits, power systems, or software –
-          and then validating those models with data and experiments.
+          I am an Electrical Engineering student at York University with an early foundation in astrophysics.
+          That mix pushed me toward thinking in models first, whether I am working with circuits, power systems,
+          or software, and then validating those models with data and experiments.
         </p>
         <p>
-          I’ve worked on digital audio filters, infrared heart-rate monitoring circuits, and power-flow and contingency
-          analysis using tools like MATLAB, Simulink, LTSpice/PSPICE, and ETAP. On the software side, I’m comfortable in
+          I have worked on digital audio filters, infrared heart-rate monitoring circuits, and power-flow and contingency
+          analysis using tools such as MATLAB, Simulink, LTSpice or PSPICE, and ETAP. On the software side, I am comfortable in
           C/C++, Java, Python, and MATLAB, and I like using code to make technical workflows more consistent and easier
           to repeat.
         </p>
         <p>
-          Outside the lab, I’ve built custom desktop PCs for years, which makes debugging and performance tuning feel
+          Outside the lab, I have built custom desktop PCs for years, which makes debugging and performance tuning feel
           familiar rather than intimidating. I care about clear reasoning, honest trade-offs, and documentation that
           future teammates can actually use.
         </p>
-
-        <div class="image-slot">
-          <div>
-            <span class="label">Image idea:</span>
-            Another photo of you in a lab, at your desk, or working on hardware/software.
-          </div>
-          <!-- Optional extra image:
-          <img src="assets/about_photo.jpg" alt="Jeffery working in the lab"
-               style="width:90px; border-radius:12px; border:1px solid rgba(148,163,184,0.5);" />
-          -->
-        </div>
       </div>
     </section>
 
@@ -673,10 +652,10 @@
       <div class="section-header">
         <div class="section-title">
           <span class="marker"></span>
-          <span>Career: Education &amp; Experience</span>
+          <span>Career: Education and Experience</span>
         </div>
         <p class="section-caption">
-          Where I’m studying, what I’ve worked on, and how those experiences connect.
+          Where I am studying, what I have worked on, and how those experiences connect.
         </p>
       </div>
 
@@ -685,11 +664,11 @@
         <article class="card">
           <h3>Education</h3>
           <p class="meta-line">
-            York University &bull; Toronto, ON
+            York University • Toronto, ON
           </p>
           <p>
             Honours Bachelor of Engineering, Electrical Engineering<br />
-            <span class="meta-line">2021 – 2026 (expected)</span>
+            <span class="meta-line">2021 to 2026 (expected)</span>
           </p>
           <p>
             Earlier in my studies, I completed coursework in Astrophysics before transitioning fully into Electrical
@@ -698,40 +677,35 @@
           </p>
           <ul class="list-compact">
             <li>Electronic Circuits and Devices, Analog Electronics</li>
-            <li>Digital Logic Design &amp; Communication Networks</li>
+            <li>Digital Logic Design and Communication Networks</li>
             <li>Signals and Systems, Engineering Probability and Statistics</li>
             <li>Introduction to Power Systems, Renewable Energy Systems</li>
-            <li>Business Essentials for Technology Entrepreneurs I &amp; II</li>
+            <li>Business Essentials for Technology Entrepreneurs I and II</li>
           </ul>
 
           <div class="pill-row">
-            <span class="pill">MATLAB &amp; Simulink</span>
-            <span class="pill">LTSpice / PSPICE</span>
+            <span class="pill">MATLAB and Simulink</span>
+            <span class="pill">LTSpice or PSPICE</span>
             <span class="pill">ETAP</span>
             <span class="pill">AutoCAD</span>
           </div>
 
           <div class="image-slot">
-            <div>
-              <span class="label">Campus:</span>
-              York University environment where I’ve been building this foundation.
-            </div>
             <img
               src="assets/campusphoto.jpg"
               alt="York University campus"
-              style="width:110px; border-radius:12px; border:1px solid rgba(148,163,184,0.5);"
             />
           </div>
         </article>
 
         <!-- Scotiabank internship -->
         <article class="card">
-          <h3>Software Developer Intern – Global Wealth Solutions</h3>
+          <h3>Software Developer Intern, Global Wealth Operations</h3>
           <p class="meta-line">
-            Scotiabank &bull; Toronto, ON &bull; 12-month internship
+            Scotiabank • Toronto, ON • 12-month internship
           </p>
           <p>
-            At Scotiabank, I’m part of the Global Wealth Solutions team, focusing on automation and data workflows that
+            At Scotiabank, I am part of the Global Wealth Operations team, focusing on automation and data workflows that
             support regulatory reporting and internal stakeholders. My work sits at the intersection of software
             tooling, data pipelines, and business requirements.
           </p>
@@ -740,14 +714,14 @@
               Build and maintain Python-based automations to streamline recurring reporting and data quality checks.
             </li>
             <li>
-              Work with data platforms such as Dremio and Power BI to surface metrics and insights for internal teams.
+              Work with data platforms and Power BI to surface metrics and insights for internal teams.
             </li>
             <li>
               Collaborate with developers, analysts, and business partners to understand requirements and translate them
               into reliable, maintainable scripts and dashboards.
             </li>
             <li>
-              Contribute to documentation and internal knowledge-sharing so that tools are approachable for other team
+              Contribute to documentation and internal knowledge sharing so that tools are approachable for other team
               members, not just the original author.
             </li>
           </ul>
@@ -755,19 +729,14 @@
           <div class="pill-row">
             <span class="pill">Python</span>
             <span class="pill">Power BI</span>
-            <span class="pill">Dremio / SQL</span>
+            <span class="pill">SQL</span>
             <span class="pill">Process Automation</span>
           </div>
 
           <div class="image-slot">
-            <div>
-              <span class="label">Dashboard:</span>
-              A non-sensitive visual representation of the kind of reporting and automation I work with.
-            </div>
             <img
               src="assets/dashboardphoto.jpg"
               alt="Dashboard visualization example"
-              style="width:110px; border-radius:12px; border:1px solid rgba(148,163,184,0.5);"
             />
           </div>
         </article>
@@ -776,19 +745,19 @@
       <!-- Additional Experience -->
       <div class="section" style="margin-top: 1.5rem;">
         <div class="card fade-in">
-          <h3>Additional Experience &amp; Interests</h3>
+          <h3>Additional Experience and Interests</h3>
           <p class="meta-line">
-            How I’ve built leadership, mentoring, and hands-on hardware skills.
+            How I have built leadership, mentoring, and hands-on hardware skills.
           </p>
           <ul class="list-compact">
             <li>
-              <strong>Orientation Leader – York University</strong> (2018, 2019, 2023): Led and mentored incoming
+              <strong>Orientation Leader at York University</strong> (2018, 2019, 2023): Led and mentored incoming
               engineering students, ran team-building activities, and helped new students navigate academic and campus
               life.
             </li>
             <li>
               <strong>Custom Computer Assembly</strong>: Designed and built custom desktop systems tailored to user
-              workloads, focusing on component compatibility, thermal performance, and long-term reliability.
+              workloads, focusing on component compatibility, thermal performance, and long term reliability.
             </li>
           </ul>
           <p style="margin-top:0.6rem;">
@@ -798,14 +767,9 @@
           </p>
 
           <div class="image-slot">
-            <div>
-              <span class="label">Custom PC Build:</span>
-              One of my long-term hardware projects, built for both performance and stability.
-            </div>
             <img
               src="assets/customPCbuild.jpg"
               alt="Custom PC build by Jeffery"
-              style="width:110px; border-radius:12px; border:1px solid rgba(148,163,184,0.5);"
             />
           </div>
         </div>
@@ -820,7 +784,7 @@
           <span>Resume</span>
         </div>
         <p class="section-caption">
-          Quick access to my current CV and a visual snapshot of my experience.
+          Quick access to my current CV and a summary of my experience.
         </p>
       </div>
 
@@ -830,7 +794,6 @@
           resume as a PDF.
         </p>
 
-        <!-- Resume download link using your actual filename -->
         <a
           class="resume-link"
           href="assets/JefferyEngineeringResumeV1.1.pdf"
@@ -862,7 +825,6 @@
   </footer>
 
   <script>
-    // Theme from localStorage
     (function () {
       const storedTheme = localStorage.getItem("jl-theme");
       if (storedTheme === "light") {
@@ -889,7 +851,6 @@
       updateThemeUI();
     });
 
-    // Fade-in on scroll
     const fadeElements = document.querySelectorAll(".fade-in");
     const observer = new IntersectionObserver(
       (entries) => {
