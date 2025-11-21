@@ -374,3 +374,514 @@
       margin: 0.2rem 0 0.25rem;
       font-size: 0.92rem;
       color: var(--text-muted);
+    }
+
+    .meta-line {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-top: 0.35rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .pill {
+      font-size: 0.78rem;
+      padding: 0.16rem 0.5rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid rgba(56, 189, 248, 0.5);
+    }
+
+    .image-slot {
+      margin-top: 0.6rem;
+      border-radius: 12px;
+      border: 1px dashed rgba(148, 163, 184, 0.7);
+      background: radial-gradient(
+        circle at top left,
+        rgba(56, 189, 248, 0.12),
+        rgba(15, 23, 42, 0.95)
+      );
+      padding: 0.8rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    body.light .image-slot {
+      background: #f1f5f9;
+    }
+
+    .image-slot span.label {
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    .image-slot code {
+      font-size: 0.78rem;
+      background: rgba(15, 23, 42, 0.9);
+      padding: 0.12rem 0.35rem;
+      border-radius: 6px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    body.light .image-slot code {
+      background: #e5e7eb;
+    }
+
+    .list-compact {
+      padding-left: 1rem;
+      margin: 0.4rem 0 0.1rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .list-compact li {
+      margin-bottom: 0.2rem;
+    }
+
+    .resume-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+      padding: 0.45rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--text);
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color 0.2s ease, transform 0.08s ease,
+        box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    body.light .resume-link {
+      background: #ffffff;
+    }
+
+    .resume-link:hover {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.4);
+      transform: translateY(-1px);
+    }
+
+    footer {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 2.5rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      border-top: 1px solid rgba(15, 23, 42, 0.8);
+    }
+
+    .footer-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-icon-link {
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-icon-link svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--accent);
+      transition: transform 0.15s ease, filter 0.15s ease;
+    }
+
+    .footer-icon-link:hover svg {
+      transform: translateY(-1px) scale(1.05);
+      filter: drop-shadow(0 0 4px rgba(56, 189, 248, 0.5));
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero.fade-in {
+      transform: translateY(10px) scale(0.99);
+      transition: opacity 0.55s ease-out, transform 0.55s ease-out;
+    }
+
+    .hero.fade-in.visible {
+      transform: translateY(0) scale(1);
+    }
+
+    @media (max-width: 768px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .card-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      footer {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="brand-block">
+        <div class="avatar-placeholder">
+          <span>JL</span>
+        </div>
+        <div class="brand-text">
+          <h1>Jeffery Lucchetta</h1>
+          <p>Electrical Engineering Student &amp; Software Developer in Training</p>
+        </div>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#career">Career</a>
+        <a href="#resume">Resume</a>
+
+        <a
+          class="nav-social"
+          href="https://www.linkedin.com/in/jefferylucchetta/"
+          target="_blank"
+          aria-label="LinkedIn profile"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M8.339 17V10.667H5.667V17H8.339M7.003 9.56C7.927 9.56 8.667 8.8 8.667 7.893C8.667 6.987 7.927 6.227 7.003 6.227C6.08 6.227 5.339 6.987 5.339 7.893C5.339 8.8 6.08 9.56 7.003 9.56M18.667 17V13.227C18.667 11.227 17.56 10.227 16 10.227C14.773 10.227 14 10.987 13.667 11.56V10.667H11V17H13.667V13.667C13.667 12.667 14.227 12 15.227 12C16.227 12 16.667 12.667 16.667 13.667V17H18.667Z" />
+          </svg>
+        </a>
+
+        <button class="theme-toggle" id="themeToggle" type="button">
+          <span class="icon" id="themeIcon">🌙</span>
+          <span id="themeLabel">Dark mode</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero fade-in" id="top">
+      <div class="hero-inner">
+        <div>
+          <h2 class="hero-title">
+            Building systems that connect hardware, software, and people.
+          </h2>
+          <p class="hero-subtitle">
+            I’m an Electrical Engineering student at York University with a background in astrophysics,
+            hands-on experience designing circuits and power systems, and a growing focus on
+            software tooling and automation in financial technology.
+          </p>
+          <div class="hero-tags">
+            <span class="tag-pill">Electrical Engineering @ York University</span>
+            <span class="tag-pill">Scotiabank – Global Wealth Solutions (Intern)</span>
+            <span class="tag-pill">Digital Design &amp; Power Systems</span>
+            <span class="tag-pill">Python • MATLAB • C/C++ • Verilog</span>
+          </div>
+        </div>
+        <div class="hero-highlight">
+          <strong>// Snapshot</strong>
+          <div>
+            • Astrophysics foundation, transitioning into applied electrical engineering.<br />
+            • Built and tuned custom PCs since high school, now designing circuits and embedded systems.<br />
+            • Experience with signal processing, power-flow analysis, and automation to support real-world decisions.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section fade-in">
+      <div class="section-header">
+        <div class="section-title">
+          <span class="marker"></span>
+          <span>About Me</span>
+        </div>
+        <p class="section-caption">
+          Technical background, engineering focus, and how I like to work.
+        </p>
+      </div>
+
+      <div class="card">
+        <p>
+          I’m an Electrical Engineering student at York University with an early foundation in astrophysics. That mix
+          pushed me toward thinking in models first – whether I’m working with circuits, power systems, or software –
+          and then validating those models with data and experiments.
+        </p>
+        <p>
+          I’ve worked on digital audio filters, infrared heart-rate monitoring circuits, and power-flow and contingency
+          analysis using tools like MATLAB, Simulink, LTSpice/PSPICE, and ETAP. On the software side, I’m comfortable in
+          C/C++, Java, Python, and MATLAB, and I like using code to make technical workflows more consistent and easier
+          to repeat.
+        </p>
+        <p>
+          Outside the lab, I’ve built custom desktop PCs for years, which makes debugging and performance tuning feel
+          familiar rather than intimidating. I care about clear reasoning, honest trade-offs, and documentation that
+          future teammates can actually use.
+        </p>
+
+        <div class="image-slot">
+          <div>
+            <span class="label">Image suggestion:</span>
+            A clean headshot or a photo of you working in a lab, at your desk, or near engineering equipment.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="career" class="section fade-in">
+      <div class="section-header">
+        <div class="section-title">
+          <span class="marker"></span>
+          <span>Career: Education &amp; Experience</span>
+        </div>
+        <p class="section-caption">
+          Where I’m studying, what I’ve worked on, and how those experiences connect.
+        </p>
+      </div>
+
+      <div class="card-grid">
+        <article class="card">
+          <h3>Education</h3>
+          <p class="meta-line">
+            York University &bull; Toronto, ON
+          </p>
+          <p>
+            Honours Bachelor of Engineering, Electrical Engineering<br />
+            <span class="meta-line">2021 – 2026 (expected)</span>
+          </p>
+          <p>
+            Earlier in my studies, I completed coursework in Astrophysics before transitioning fully into Electrical
+            Engineering. That shift added mathematical depth and a systems-level perspective that I now apply to
+            circuit design, signal processing, and power systems.
+          </p>
+          <ul class="list-compact">
+            <li>Electronic Circuits and Devices, Analog Electronics</li>
+            <li>Digital Logic Design &amp; Communication Networks</li>
+            <li>Signals and Systems, Engineering Probability and Statistics</li>
+            <li>Introduction to Power Systems, Renewable Energy Systems</li>
+            <li>Business Essentials for Technology Entrepreneurs I &amp; II</li>
+          </ul>
+
+          <div class="pill-row">
+            <span class="pill">MATLAB &amp; Simulink</span>
+            <span class="pill">LTSpice / PSPICE</span>
+            <span class="pill">ETAP</span>
+            <span class="pill">AutoCAD</span>
+          </div>
+
+          <div class="image-slot">
+            <div>
+              <span class="label">Image suggestion:</span>
+              Campus photo, lab environment, or a screenshot of a circuit / ETAP model you’re proud of.
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Software Developer Intern – Global Wealth Solutions</h3>
+          <p class="meta-line">
+            Scotiabank &bull; Toronto, ON &bull; 12-month internship
+          </p>
+          <p>
+            At Scotiabank, I’m part of the Global Wealth Solutions team, focusing on automation and data workflows that
+            support regulatory reporting and internal stakeholders. My work sits at the intersection of software
+            tooling, data pipelines, and business requirements.
+          </p>
+          <ul class="list-compact">
+            <li>
+              Build and maintain Python-based automations to streamline recurring reporting and data quality checks.
+            </li>
+            <li>
+              Work with data platforms such as Dremio and Power BI to surface metrics and insights for internal teams.
+            </li>
+            <li>
+              Collaborate with developers, analysts, and business partners to understand requirements and translate them
+              into reliable, maintainable scripts and dashboards.
+            </li>
+            <li>
+              Contribute to documentation and internal knowledge-sharing so that tools are approachable for other team
+              members, not just the original author.
+            </li>
+          </ul>
+
+          <div class="pill-row">
+            <span class="pill">Python</span>
+            <span class="pill">Power BI</span>
+            <span class="pill">Dremio / SQL</span>
+            <span class="pill">Process Automation</span>
+          </div>
+
+          <div class="image-slot">
+            <div>
+              <span class="label">Image suggestion:</span>
+              A tasteful dashboard screenshot (with no sensitive data) or a simple abstract graphic representing data
+              pipelines or automation.
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="section" style="margin-top: 1.5rem;">
+        <div class="card fade-in">
+          <h3>Additional Experience &amp; Interests</h3>
+          <p class="meta-line">
+            How I’ve built leadership, mentoring, and hands-on hardware skills.
+          </p>
+          <ul class="list-compact">
+            <li>
+              <strong>Orientation Leader – York University</strong> (2018, 2019, 2023): Led and mentored incoming
+              engineering students, ran team-building activities, and helped new students navigate academic and campus
+              life.
+            </li>
+            <li>
+              <strong>Custom Computer Assembly</strong>: Designed and built custom desktop systems tailored to user
+              workloads, focusing on component compatibility, thermal performance, and long-term reliability.
+            </li>
+          </ul>
+          <p style="margin-top:0.6rem;">
+            These roles strengthened my ability to explain technical decisions clearly, support people who are ramping
+            up on something new, and think about systems not just as hardware and software, but as tools that need to
+            work for real users.
+          </p>
+
+          <div class="image-slot">
+            <div>
+              <span class="label">Image suggestion:</span>
+              A photo of a PC build you assembled, a lab bench setup, or a group photo from orientation events.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="resume" class="section fade-in">
+      <div class="section-header">
+        <div class="section-title">
+          <span class="marker"></span>
+          <span>Resume</span>
+        </div>
+        <p class="section-caption">
+          Quick access to my current CV and a visual snapshot of my experience.
+        </p>
+      </div>
+
+      <div class="card">
+        <p>
+          For a concise view of my coursework, technical skills, and project experience, you can download my full
+          resume as a PDF.
+        </p>
+
+        <a
+          class="resume-link"
+          href="assets/Jeffery_Lucchetta_Resume.pdf"
+          target="_blank"
+        >
+          <span>📄</span>
+          <span>Download my resume (PDF)</span>
+        </a>
+
+        <div class="image-slot" style="margin-top: 0.9rem;">
+          <div>
+            <span class="label">Optional:</span>
+            Add a small thumbnail preview of your resume here once you have a PDF in the repo.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2025 Jeffery Lucchetta</span>
+    <span class="footer-right">
+      Built with HTML, CSS, and JavaScript —
+      <a
+        class="footer-icon-link"
+        href="https://www.linkedin.com/in/jefferylucchetta/"
+        target="_blank"
+        aria-label="LinkedIn profile"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M8.339 17V10.667H5.667V17H8.339M7.003 9.56C7.927 9.56 8.667 8.8 8.667 7.893C8.667 6.987 7.927 6.227 7.003 6.227C6.08 6.227 5.339 6.987 5.339 7.893C5.339 8.8 6.08 9.56 7.003 9.56M18.667 17V13.227C18.667 11.227 17.56 10.227 16 10.227C14.773 10.227 14 10.987 13.667 11.56V10.667H11V17H13.667V13.667C13.667 12.667 14.227 12 15.227 12C16.227 12 16.667 12.667 16.667 13.667V17H18.667Z" />
+        </svg>
+      </a>
+    </span>
+  </footer>
+
+  <script>
+    (function () {
+      const storedTheme = localStorage.getItem("jl-theme");
+      if (storedTheme === "light") {
+        document.body.classList.add("light");
+      }
+    })();
+
+    const themeToggle = document.getElementById("themeToggle");
+    const themeLabel = document.getElementById("themeLabel");
+    const themeIcon = document.getElementById("themeIcon");
+
+    function updateThemeUI() {
+      const isLight = document.body.classList.contains("light");
+      themeLabel.textContent = isLight ? "Light mode" : "Dark mode";
+      themeIcon.textContent = isLight ? "☀️" : "🌙";
+    }
+
+    updateThemeUI();
+
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("light");
+      const isLight = document.body.classList.contains("light");
+      localStorage.setItem("jl-theme", isLight ? "light" : "dark");
+      updateThemeUI();
+    });
+
+    const fadeElements = document.querySelectorAll(".fade-in");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    fadeElements.forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
