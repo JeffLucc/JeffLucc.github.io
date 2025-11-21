@@ -104,7 +104,6 @@
       flex-shrink: 0;
     }
 
-    /* TODO: Replace initials JL with your own avatar or photo later */
     .avatar-placeholder span {
       letter-spacing: 0.04em;
     }
@@ -316,4 +315,62 @@
       align-items: baseline;
       justify-content: space-between;
       gap: 0.5rem;
-      margin-botto
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-title span.marker {
+      width: 7px;
+      height: 18px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25);
+    }
+
+    .section-caption {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .card {
+      background: linear-gradient(
+        145deg,
+        rgba(15, 23, 42, 0.98),
+        rgba(15, 23, 42, 0.93)
+      );
+      border-radius: var(--card-radius);
+      border: 1px solid var(--border-subtle);
+      padding: 1.2rem 1.1rem 1.1rem;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.65);
+      position: relative;
+      overflow: hidden;
+    }
+
+    body.light .card {
+      background: #ffffff;
+      box-shadow: 0 14px 24px rgba(15, 23, 42, 0.12);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 1rem;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 0.35rem;
+      font-size: 1.05rem;
+    }
+
+    .card p {
+      margin: 0.2rem 0 0.25rem;
+      font-size: 0.92rem;
+      color: var(--text-muted);
