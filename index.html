@@ -3,131 +3,810 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My E‑Portfolio</title>
+  <title>Jeffery Lucchetta | E-Portfolio</title>
+
   <style>
+    :root {
+      --bg: #0f172a;
+      --bg-elevated: #111827;
+      --bg-soft: #020617;
+      --text: #e5e7eb;
+      --text-muted: #9ca3af;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.12);
+      --border-subtle: #1f2933;
+      --card-radius: 14px;
+      --max-width: 960px;
+    }
+
+    body.light {
+      --bg: #f4f4f5;
+      --bg-elevated: #ffffff;
+      --bg-soft: #e5e7eb;
+      --text: #111827;
+      --text-muted: #4b5563;
+      --accent: #0ea5e9;
+      --accent-soft: rgba(14, 165, 233, 0.08);
+      --border-subtle: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      color: #222;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #1e293b 0, var(--bg-soft) 55%);
+      color: var(--text);
       line-height: 1.6;
+      transition: background 0.3s ease, color 0.3s ease;
     }
+
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.25rem 3rem;
+    }
+
     header {
-      background: #111;
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
+      padding: 1.25rem 1.25rem 0.5rem;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(
+        to bottom,
+        rgba(15, 23, 42, 0.92),
+        rgba(15, 23, 42, 0.76),
+        transparent
+      );
     }
-    nav {
+
+    .header-inner {
       display: flex;
-      justify-content: center;
-      gap: 25px;
-      margin-top: 20px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
     }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 1rem;
-      padding: 8px 14px;
-      border-radius: 6px;
-      background: #333;
+
+    .brand-block {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
     }
-    nav a:hover {
-      background: #555;
-    }
-    .section {
-      padding: 60px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-    h2 {
-      margin-bottom: 10px;
-      font-size: 2rem;
-      border-left: 6px solid #111;
-      padding-left: 10px;
-    }
-    .image-box {
-      width: 100%;
-      height: 250px;
-      background: #ddd;
-      border: 2px dashed #aaa;
-      border-radius: 12px;
+
+    .avatar-placeholder {
+      width: 52px;
+      height: 52px;
+      border-radius: 999px;
+      border: 2px solid var(--accent-soft);
+      background: radial-gradient(circle at 30% 0, #38bdf8 0, #0f172a 55%);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 20px 0;
+      font-weight: 700;
+      color: #e5e7eb;
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.9);
+      flex-shrink: 0;
+    }
+
+    /* TODO: Replace initials JL with your own avatar or photo later */
+    .avatar-placeholder span {
+      letter-spacing: 0.04em;
+    }
+
+    .brand-text h1 {
+      margin: 0;
+      font-size: 1.35rem;
+      font-weight: 650;
+    }
+
+    .brand-text p {
+      margin: 2px 0 0;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.4rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    nav a:hover {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-color: rgba(148, 163, 184, 0.4);
+    }
+
+    .theme-toggle {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.7);
+      color: var(--text);
+      padding: 0.35rem 0.75rem;
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease,
+        transform 0.08s ease;
+    }
+
+    body.light .theme-toggle {
+      background: #ffffffdd;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .theme-toggle span.icon {
       font-size: 1rem;
-      color: #666;
     }
-    .career-block {
-      margin-bottom: 40px;
+
+    .hero {
+      margin-top: 1.75rem;
+      margin-bottom: 2.25rem;
+      padding: 1.75rem 1.1rem 1.9rem;
+      border-radius: 22px;
+      background: linear-gradient(
+        135deg,
+        rgba(56, 189, 248, 0.18),
+        rgba(15, 23, 42, 0.96)
+      );
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.7);
+      position: relative;
+      overflow: hidden;
     }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        circle at 120% -10%,
+        rgba(56, 189, 248, 0.25),
+        transparent 50%
+      );
+      pointer-events: none;
+      opacity: 0.9;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+      gap: 1.7rem;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-size: 1.9rem;
+      margin: 0 0 0.6rem;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-subtitle {
+      margin: 0 0 0.9rem;
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      max-width: 38rem;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+
+    .tag-pill {
+      font-size: 0.78rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--text-muted);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-highlight {
+      font-size: 0.82rem;
+      padding: 0.5rem 0.75rem;
+      border-radius: 14px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--text-muted);
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .hero-highlight strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .section {
+      margin-bottom: 2.25rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-title span.marker {
+      width: 7px;
+      height: 18px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25);
+    }
+
+    .section-caption {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .card {
+      background: linear-gradient(
+        145deg,
+        rgba(15, 23, 42, 0.98),
+        rgba(15, 23, 42, 0.93)
+      );
+      border-radius: var(--card-radius);
+      border: 1px solid var(--border-subtle);
+      padding: 1.2rem 1.1rem 1.1rem;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.65);
+      position: relative;
+      overflow: hidden;
+    }
+
+    body.light .card {
+      background: #ffffff;
+      box-shadow: 0 14px 24px rgba(15, 23, 42, 0.12);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 1rem;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 0.35rem;
+      font-size: 1.05rem;
+    }
+
+    .card p {
+      margin: 0.2rem 0 0.25rem;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    .meta-line {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      margin-top: 0.35rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .pill {
+      font-size: 0.78rem;
+      padding: 0.16rem 0.5rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid rgba(56, 189, 248, 0.5);
+    }
+
+    .image-slot {
+      margin-top: 0.6rem;
+      border-radius: 12px;
+      border: 1px dashed rgba(148, 163, 184, 0.7);
+      background: radial-gradient(
+        circle at top left,
+        rgba(56, 189, 248, 0.12),
+        rgba(15, 23, 42, 0.95)
+      );
+      padding: 0.8rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .image-slot span.label {
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    .image-slot code {
+      font-size: 0.78rem;
+      background: rgba(15, 23, 42, 0.9);
+      padding: 0.12rem 0.35rem;
+      border-radius: 6px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    body.light .image-slot {
+      background: #f1f5f9;
+    }
+
+    .list-compact {
+      padding-left: 1rem;
+      margin: 0.4rem 0 0.1rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .list-compact li {
+      margin-bottom: 0.2rem;
+    }
+
+    .resume-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+      padding: 0.45rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--text);
+      text-decoration: none;
+      cursor: pointer;
+      transition: border-color 0.2s ease, transform 0.08s ease,
+        box-shadow 0.18s ease, background 0.18s ease;
+    }
+
+    body.light .resume-link {
+      background: #ffffff;
+    }
+
+    .resume-link:hover {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.4);
+      transform: translateY(-1px);
+    }
+
     footer {
-      text-align: center;
-      padding: 40px;
-      background: #111;
-      color: white;
-      margin-top: 40px;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 2.5rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      border-top: 1px solid rgba(15, 23, 42, 0.8);
+    }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero.fade-in {
+      transform: translateY(10px) scale(0.99);
+      transition: opacity 0.55s ease-out, transform 0.55s ease-out;
+    }
+
+    .hero.fade-in.visible {
+      transform: translateY(0) scale(1);
+    }
+
+    @media (max-width: 768px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .card-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      footer {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
+
 <body>
   <header>
-    <h1><!-- Replace with Your Name --> My Name</h1>
-    <p><!-- Replace with a short tagline --> Aspiring Engineer • Problem Solver • Builder</p>
-    <nav>
-      <a href="#about">About Me</a>
-      <a href="#career">Career</a>
-      <a href="#resume">Resume</a>
-    </nav>
+    <div class="header-inner">
+      <div class="brand-block">
+        <div class="avatar-placeholder">
+          <!-- TODO: Replace JL or eventually swap this block for an <img> with your headshot -->
+          <span>JL</span>
+        </div>
+        <div class="brand-text">
+          <!-- TODO: If you prefer a different title than "E-Portfolio", edit below -->
+          <h1>Jeffery Lucchetta</h1>
+          <p>Electrical Engineering Student &amp; Software Developer in Training</p>
+        </div>
+      </div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#career">Career</a>
+        <a href="#resume">Resume</a>
+        <button class="theme-toggle" id="themeToggle" type="button">
+          <span class="icon" id="themeIcon">🌙</span>
+          <span id="themeLabel">Dark mode</span>
+        </button>
+      </nav>
+    </div>
   </header>
 
-  <section id="about" class="section">
-    <h2>About Me</h2>
-    <p>
-      <!-- Replace this paragraph with your personal introduction -->
-      Write a short but personal introduction here. Mention who you are, what you're
-      studying, your interests, and your long‑term goals.
-    </p>
-    <div class="image-box">Upload an image of yourself or a relevant photo here.</div>
-  </section>
+  <main>
+    <!-- Hero / Summary -->
+    <section class="hero fade-in" id="top">
+      <div class="hero-inner">
+        <div>
+          <h2 class="hero-title">
+            Building systems that connect hardware, software, and people.
+          </h2>
+          <p class="hero-subtitle">
+            I’m an Electrical Engineering student at York University with a background in astrophysics,
+            hands-on experience designing circuits and power systems, and a growing focus on
+            software tooling and automation in financial technology.
+          </p>
+          <div class="hero-tags">
+            <span class="tag-pill">Electrical Engineering @ York University</span>
+            <span class="tag-pill">Scotiabank – Global Wealth Solutions (Intern)</span>
+            <span class="tag-pill">Digital Design &amp; Power Systems</span>
+            <span class="tag-pill">Python • MATLAB • C/C++ • Verilog</span>
+          </div>
+        </div>
+        <div class="hero-highlight">
+          <strong>// Snapshot</strong>
+          <div>
+            • Astrophysics foundation, transitioning into applied electrical engineering.<br />
+            • Built and tuned custom PCs since high school, now designing circuits and embedded systems.<br />
+            • Experience with signal processing, power-flow analysis, and automation to support real-world decisions.
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <section id="career" class="section">
-    <h2>Career</h2>
+    <!-- About Me -->
+    <section id="about" class="section fade-in">
+      <div class="section-header">
+        <div class="section-title">
+          <span class="marker"></span>
+          <span>About Me</span>
+        </div>
+        <p class="section-caption">
+          Technical background, engineering focus, and how I like to work.
+        </p>
+      </div>
 
-    <div class="career-block">
-      <h3>Education</h3>
-      <p>
-        <!-- Add your school, program, year, achievements -->
-        York University – Electrical Engineering (Expected Graduation: 20XX)
-      </p>
-      <div class="image-box">Add a school‑related image or campus photo.</div>
-    </div>
+      <div class="card">
+        <!-- TODO: This is your main About Me paragraph. Adjust wording, length, and emphasis as needed. -->
+        <p>
+          I’m an Electrical Engineering student at York University with a technical foundation that started in
+          astrophysics and evolved into building and analyzing real-world systems. That path has given me a habit of
+          thinking in models first – from physical systems to software architectures – and then validating those models
+          with data and experimentation.
+        </p>
+        <p>
+          On the hardware side, I’ve worked with electronic circuits, power systems, and renewable energy models, using
+          tools like ETAP, MATLAB, LTSpice/PSPICE, and Simulink. I’ve designed and analyzed systems such as FIR filters
+          for digital audio denoising, infrared heart rate monitors, and power-flow and contingency studies on
+          transmission networks. On the software side, I’m comfortable in C/C++, Java, Python, and MATLAB, and I enjoy
+          writing code that makes technical workflows repeatable and easier to reason about.
+        </p>
+        <p>
+          Outside formal coursework, I’ve built custom desktop computers since I was a teenager and I keep a strong
+          interest in how hardware, operating systems, and applications interact. That background makes me very
+          comfortable debugging, benchmarking, and thinking about performance, reliability, and long-term maintainability.
+        </p>
+        <p>
+          I like working on teams where people are honest about constraints, deliberate about trade-offs, and willing to
+          share context. I care about writing documentation that future teammates can actually use and building tools
+          that reduce friction rather than adding more steps to a process.
+        </p>
 
-    <div class="career-block">
-      <h3>Experience</h3>
-      <p>
-        <!-- Add internships, jobs, roles, responsibilities -->
-        Add your professional experience here. Include what you worked on, what
-        technologies you used, and what you contributed.
-      </p>
-      <div class="image-box">Add an image related to your work or a project screenshot.</div>
-    </div>
-  </section>
+        <div class="image-slot">
+          <div>
+            <span class="label">Image suggestion:</span>
+            A clean headshot or a photo of you working in a lab, at your desk, or near engineering equipment.
+          </div>
+          <!-- TODO: Replace this placeholder with an actual <img> once you upload it to your repo -->
+          <!-- Example:
+          <img src="assets/profile.jpg" alt="Photo of Jeffery" style="width:90px; border-radius:12px; border:1px solid rgba(148,163,184,0.5);" />
+          -->
+        </div>
+      </div>
+    </section>
 
-  <section id="resume" class="section">
-    <h2>Resume</h2>
-    <p>
-      <!-- Optional: Replace text with instructions or embed your resume -->
-      Add a downloadable PDF link to your resume below.
-    </p>
-    <a href="#" style="font-size: 1.1rem; color: #0066cc;">Download My Resume (PDF)</a>
-    <div class="image-box">Insert an image preview of your resume (optional).</div>
-  </section>
+    <!-- Career Section -->
+    <section id="career" class="section fade-in">
+      <div class="section-header">
+        <div class="section-title">
+          <span class="marker"></span>
+          <span>Career: Education &amp; Experience</span>
+        </div>
+        <p class="section-caption">
+          Where I’m studying, what I’ve worked on, and how those experiences connect.
+        </p>
+      </div>
+
+      <div class="card-grid">
+        <!-- Education -->
+        <article class="card">
+          <h3>Education</h3>
+          <p class="meta-line">
+            York University &bull; Toronto, ON
+          </p>
+          <!-- TODO: Update expected graduation year if needed -->
+          <p>
+            Honours Bachelor of Engineering, Electrical Engineering<br />
+            <span class="meta-line">2021 – 2026 (expected)</span>
+          </p>
+          <p>
+            Earlier in my studies, I completed coursework in Astrophysics before transitioning fully into Electrical
+            Engineering. That shift added mathematical depth and a systems-level perspective that I now apply to
+            circuit design, signal processing, and power systems.
+          </p>
+          <ul class="list-compact">
+            <li>Electronic Circuits and Devices, Analog Electronics</li>
+            <li>Digital Logic Design &amp; Communication Networks</li>
+            <li>Signals and Systems, Engineering Probability and Statistics</li>
+            <li>Introduction to Power Systems, Renewable Energy Systems</li>
+            <li>Business Essentials for Technology Entrepreneurs I &amp; II</li>
+          </ul>
+
+          <div class="pill-row">
+            <span class="pill">MATLAB &amp; Simulink</span>
+            <span class="pill">LTSpice / PSPICE</span>
+            <span class="pill">ETAP</span>
+            <span class="pill">AutoCAD</span>
+          </div>
+
+          <div class="image-slot">
+            <div>
+              <span class="label">Image suggestion:</span>
+              Campus photo, lab environment, or a screenshot of a circuit / ETAP model you’re proud of.
+            </div>
+            <!-- Example:
+            <img src="assets/campus.jpg" alt="York University" style="width:90px; border-radius:12px; border:1px solid rgba(148,163,184,0.5);" />
+            -->
+          </div>
+        </article>
+
+        <!-- Scotiabank Internship -->
+        <article class="card">
+          <h3>Software Developer Intern – Global Wealth Solutions</h3>
+          <p class="meta-line">
+            Scotiabank &bull; Toronto, ON &bull; 12-month internship
+          </p>
+          <!-- TODO: Adjust dates to match your actual start/end -->
+          <p>
+            At Scotiabank, I’m part of the Global Wealth Solutions team, focusing on automation and data workflows that
+            support regulatory reporting and internal stakeholders. My work sits at the intersection of software
+            tooling, data pipelines, and business requirements.
+          </p>
+          <ul class="list-compact">
+            <li>
+              Build and maintain Python-based automations to streamline recurring reporting and data quality checks.
+            </li>
+            <li>
+              Work with data platforms such as Dremio and Power BI to surface metrics and insights for internal teams.
+            </li>
+            <li>
+              Collaborate with developers, analysts, and business partners to understand requirements and translate them
+              into reliable, maintainable scripts and dashboards.
+            </li>
+            <li>
+              Contribute to documentation and internal knowledge-sharing so that tools are approachable for other team
+              members, not just the original author.
+            </li>
+          </ul>
+
+          <div class="pill-row">
+            <span class="pill">Python</span>
+            <span class="pill">Power BI</span>
+            <span class="pill">Dremio / SQL</span>
+            <span class="pill">Process Automation</span>
+          </div>
+
+          <div class="image-slot">
+            <div>
+              <span class="label">Image suggestion:</span>
+              A tasteful dashboard screenshot (with no sensitive data) or a simple abstract graphic representing data
+              pipelines or automation.
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Additional Experience -->
+      <div class="section" style="margin-top: 1.5rem;">
+        <div class="card fade-in">
+          <h3>Additional Experience &amp; Interests</h3>
+          <p class="meta-line">
+            How I’ve built leadership, mentoring, and hands-on hardware skills.
+          </p>
+          <ul class="list-compact">
+            <li>
+              <strong>Orientation Leader – York University</strong> (2018, 2019, 2023): Led and mentored incoming
+              engineering students, ran team-building activities, and helped new students navigate academic and campus
+              life.
+            </li>
+            <li>
+              <strong>Custom Computer Assembly</strong>: Designed and built custom desktop systems tailored to user
+              workloads, focusing on component compatibility, thermal performance, and long-term reliability.
+            </li>
+          </ul>
+          <p style="margin-top:0.6rem;">
+            These roles strengthened my ability to explain technical decisions clearly, support people who are ramping
+            up on something new, and think about systems not just as hardware and software, but as tools that need to
+            work for real users.
+          </p>
+
+          <div class="image-slot">
+            <div>
+              <span class="label">Image suggestion:</span>
+              A photo of a PC build you assembled, a lab bench setup, or a group photo from orientation events.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="section fade-in">
+      <div class="section-header">
+        <div class="section-title">
+          <span class="marker"></span>
+          <span>Resume</span>
+        </div>
+        <p class="section-caption">
+          Quick access to my current CV and a visual snapshot of my experience.
+        </p>
+      </div>
+
+      <div class="card">
+        <p>
+          For a concise view of my coursework, technical skills, and project experience, you can download my full
+          resume as a PDF.
+        </p>
+
+        <!-- TODO: Upload your resume PDF to the repo (e.g., assets/Jeffery_Lucchetta_Resume.pdf)
+             and update the href below to point to that file. -->
+        <a
+          class="resume-link"
+          href="assets/Jeffery_Lucchetta_Resume.pdf"
+          target="_blank"
+        >
+          <span>📄</span>
+          <span>Download my resume (PDF)</span>
+        </a>
+
+        <div class="image-slot" style="margin-top: 0.9rem;">
+          <div>
+            <span class="label">Optional:</span>
+            Add a small thumbnail preview of your resume here once you have a PDF in the repo.
+          </div>
+          <!-- Example:
+          <img src="assets/resume_preview.png" alt="Resume preview" style="width:120px; border-radius:10px; border:1px solid rgba(148,163,184,0.5);" />
+          -->
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <!-- Replace name -->
-    © 2025 Your Name — All Rights Reserved
+    <span>© 2025 Jeffery Lucchetta</span>
+    <span>Built with HTML, CSS, and a bit of JavaScript on GitHub Pages.</span>
   </footer>
+
+  <script>
+    // Dark mode: read from localStorage or default to dark
+    (function () {
+      const storedTheme = localStorage.getItem("jl-theme");
+      if (storedTheme === "light") {
+        document.body.classList.add("light");
+      }
+    })();
+
+    const themeToggle = document.getElementById("themeToggle");
+    const themeLabel = document.getElementById("themeLabel");
+    const themeIcon = document.getElementById("themeIcon");
+
+    function updateThemeUI() {
+      const isLight = document.body.classList.contains("light");
+      themeLabel.textContent = isLight ? "Light mode" : "Dark mode";
+      themeIcon.textContent = isLight ? "☀️" : "🌙";
+    }
+
+    updateThemeUI();
+
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("light");
+      const isLight = document.body.classList.contains("light");
+      localStorage.setItem("jl-theme", isLight ? "light" : "dark");
+      updateThemeUI();
+    });
+
+    // Fade-in on scroll
+    const fadeElements = document.querySelectorAll(".fade-in");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.15,
+      }
+    );
+
+    fadeElements.forEach((el) => observer.observe(el));
+  </script>
 </body>
 </html>
