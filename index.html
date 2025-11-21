@@ -94,18 +94,17 @@
       height: 52px;
       border-radius: 999px;
       border: 2px solid var(--accent-soft);
-      background: radial-gradient(circle at 30% 0, #38bdf8 0, #0f172a 55%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      color: #e5e7eb;
+      overflow: hidden;
+      background: #020617;
       box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.9);
       flex-shrink: 0;
     }
 
-    .avatar-placeholder span {
-      letter-spacing: 0.04em;
+    .avatar-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .brand-text h1 {
@@ -563,7 +562,7 @@
     <div class="header-inner">
       <div class="brand-block">
         <div class="avatar-placeholder">
-          <span>JL</span>
+          <img src="assets/headshotphoto.jpg" alt="Photo of Jeffery Lucchetta" />
         </div>
         <div class="brand-text">
           <h1>Jeffery Lucchetta</h1>
@@ -575,6 +574,7 @@
         <a href="#career">Career</a>
         <a href="#resume">Resume</a>
 
+        <!-- LinkedIn icon button -->
         <a
           class="nav-social"
           href="https://www.linkedin.com/in/jefferylucchetta/"
@@ -595,6 +595,7 @@
   </header>
 
   <main>
+    <!-- Hero -->
     <section class="hero fade-in" id="top">
       <div class="hero-inner">
         <div>
@@ -624,6 +625,7 @@
       </div>
     </section>
 
+    <!-- About -->
     <section id="about" class="section fade-in">
       <div class="section-header">
         <div class="section-title">
@@ -655,13 +657,18 @@
 
         <div class="image-slot">
           <div>
-            <span class="label">Image suggestion:</span>
-            A clean headshot or a photo of you working in a lab, at your desk, or near engineering equipment.
+            <span class="label">Image idea:</span>
+            Another photo of you in a lab, at your desk, or working on hardware/software.
           </div>
+          <!-- Optional extra image:
+          <img src="assets/about_photo.jpg" alt="Jeffery working in the lab"
+               style="width:90px; border-radius:12px; border:1px solid rgba(148,163,184,0.5);" />
+          -->
         </div>
       </div>
     </section>
 
+    <!-- Career -->
     <section id="career" class="section fade-in">
       <div class="section-header">
         <div class="section-title">
@@ -674,6 +681,7 @@
       </div>
 
       <div class="card-grid">
+        <!-- Education -->
         <article class="card">
           <h3>Education</h3>
           <p class="meta-line">
@@ -705,12 +713,18 @@
 
           <div class="image-slot">
             <div>
-              <span class="label">Image suggestion:</span>
-              Campus photo, lab environment, or a screenshot of a circuit / ETAP model you’re proud of.
+              <span class="label">Campus:</span>
+              York University environment where I’ve been building this foundation.
             </div>
+            <img
+              src="assets/campusphoto.jpg"
+              alt="York University campus"
+              style="width:110px; border-radius:12px; border:1px solid rgba(148,163,184,0.5);"
+            />
           </div>
         </article>
 
+        <!-- Scotiabank internship -->
         <article class="card">
           <h3>Software Developer Intern – Global Wealth Solutions</h3>
           <p class="meta-line">
@@ -747,14 +761,19 @@
 
           <div class="image-slot">
             <div>
-              <span class="label">Image suggestion:</span>
-              A tasteful dashboard screenshot (with no sensitive data) or a simple abstract graphic representing data
-              pipelines or automation.
+              <span class="label">Dashboard:</span>
+              A non-sensitive visual representation of the kind of reporting and automation I work with.
             </div>
+            <img
+              src="assets/dashboardphoto.jpg"
+              alt="Dashboard visualization example"
+              style="width:110px; border-radius:12px; border:1px solid rgba(148,163,184,0.5);"
+            />
           </div>
         </article>
       </div>
 
+      <!-- Additional Experience -->
       <div class="section" style="margin-top: 1.5rem;">
         <div class="card fade-in">
           <h3>Additional Experience &amp; Interests</h3>
@@ -780,14 +799,20 @@
 
           <div class="image-slot">
             <div>
-              <span class="label">Image suggestion:</span>
-              A photo of a PC build you assembled, a lab bench setup, or a group photo from orientation events.
+              <span class="label">Custom PC Build:</span>
+              One of my long-term hardware projects, built for both performance and stability.
             </div>
+            <img
+              src="assets/customPCbuild.jpg"
+              alt="Custom PC build by Jeffery"
+              style="width:110px; border-radius:12px; border:1px solid rgba(148,163,184,0.5);"
+            />
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Resume -->
     <section id="resume" class="section fade-in">
       <div class="section-header">
         <div class="section-title">
@@ -805,21 +830,16 @@
           resume as a PDF.
         </p>
 
+        <!-- Resume download link using your actual filename -->
         <a
           class="resume-link"
-          href="assets/Jeffery_Lucchetta_Resume.pdf"
+          href="assets/JefferyEngineeringResumeV1.1.pdf"
+          download
           target="_blank"
         >
           <span>📄</span>
           <span>Download my resume (PDF)</span>
         </a>
-
-        <div class="image-slot" style="margin-top: 0.9rem;">
-          <div>
-            <span class="label">Optional:</span>
-            Add a small thumbnail preview of your resume here once you have a PDF in the repo.
-          </div>
-        </div>
       </div>
     </section>
   </main>
@@ -842,6 +862,7 @@
   </footer>
 
   <script>
+    // Theme from localStorage
     (function () {
       const storedTheme = localStorage.getItem("jl-theme");
       if (storedTheme === "light") {
@@ -868,6 +889,7 @@
       updateThemeUI();
     });
 
+    // Fade-in on scroll
     const fadeElements = document.querySelectorAll(".fade-in");
     const observer = new IntersectionObserver(
       (entries) => {
