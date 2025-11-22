@@ -397,17 +397,13 @@
       border: 1px solid rgba(56, 189, 248, 0.5);
     }
 
-    /* image containers */
+    /* Image containers – clean, no bubbles */
     .image-slot {
       margin-top: 0.8rem;
-      border-radius: 12px;
-      border: 1px dashed rgba(148, 163, 184, 0.7);
-      background: radial-gradient(
-        circle at top left,
-        rgba(56, 189, 248, 0.12),
-        rgba(15, 23, 42, 0.95)
-      );
-      padding: 0.8rem;
+      border-radius: 16px;
+      border: none;
+      background: none;
+      padding: 0;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -417,20 +413,16 @@
       justify-content: flex-end;
     }
 
-    body.light .image-slot {
-      background: #f1f5f9;
-    }
-
     .image-slot img {
-      max-width: 320px;
+      max-width: 380px;
       width: 100%;
-      border-radius: 12px;
-      border: 1px solid rgba(148, 163, 184, 0.6);
-      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.6);
+      border-radius: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.65);
     }
 
     body.light .image-slot img {
-      box-shadow: 0 10px 18px rgba(15, 23, 42, 0.16);
+      box-shadow: 0 10px 20px rgba(15, 23, 42, 0.18);
     }
 
     .list-compact {
@@ -526,6 +518,23 @@
       transform: translateY(0) scale(1);
     }
 
+    /* Side-by-side layout for Additional Experience card */
+    .extra-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.75rem;
+    }
+
+    .extra-text {
+      flex: 1.4;
+    }
+
+    .extra-image {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+    }
+
     @media (max-width: 768px) {
       .header-inner {
         flex-direction: column;
@@ -544,6 +553,14 @@
 
       .card-grid {
         grid-template-columns: minmax(0, 1fr);
+      }
+
+      .extra-card {
+        flex-direction: column;
+      }
+
+      .extra-image {
+        justify-content: center;
       }
 
       footer {
@@ -749,33 +766,37 @@
 
       <!-- Additional Experience -->
       <div class="section" style="margin-top: 1.5rem;">
-        <div class="card fade-in">
-          <h3>Additional Experience and Interests</h3>
-          <p class="meta-line">
-            How I have built leadership, mentoring, and hands-on hardware skills.
-          </p>
-          <ul class="list-compact">
-            <li>
-              <strong>Orientation Leader at York University</strong> (2018, 2019, 2023): Led and mentored incoming
-              engineering students, ran team-building activities, and helped new students navigate academic and campus
-              life.
-            </li>
-            <li>
-              <strong>Custom Computer Assembly</strong>: Designed and built custom desktop systems tailored to user
-              workloads, focusing on component compatibility, thermal performance, and long term reliability.
-            </li>
-          </ul>
-          <p style="margin-top:0.6rem;">
-            These roles strengthened my ability to explain technical decisions clearly, support people who are ramping
-            up on something new, and think about systems not just as hardware and software, but as tools that need to
-            work for real users.
-          </p>
+        <div class="card fade-in extra-card">
+          <div class="extra-text">
+            <h3>Additional Experience and Interests</h3>
+            <p class="meta-line">
+              How I have built leadership, mentoring, and hands-on hardware skills.
+            </p>
+            <ul class="list-compact">
+              <li>
+                <strong>Orientation Leader at York University</strong> (2018, 2019, 2023): Led and mentored incoming
+                engineering students, ran team-building activities, and helped new students navigate academic and campus
+                life.
+              </li>
+              <li>
+                <strong>Custom Computer Assembly</strong>: Designed and built custom desktop systems tailored to user
+                workloads, focusing on component compatibility, thermal performance, and long term reliability.
+              </li>
+            </ul>
+            <p style="margin-top:0.6rem;">
+              These roles strengthened my ability to explain technical decisions clearly, support people who are ramping
+              up on something new, and think about systems not just as hardware and software, but as tools that need to
+              work for real users.
+            </p>
+          </div>
 
-          <div class="image-slot image-slot-right">
-            <img
-              src="assets/customPCbuild.jpg"
-              alt="Custom PC build by Jeffery"
-            />
+          <div class="extra-image">
+            <div class="image-slot image-slot-right">
+              <img
+                src="assets/customPCbuild.jpg"
+                alt="Custom PC build by Jeffery"
+              />
+            </div>
           </div>
         </div>
       </div>
