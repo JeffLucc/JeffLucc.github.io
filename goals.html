@@ -453,6 +453,27 @@
       font-style: italic;
     }
 
+    /* Large image for last section */
+    .image-large {
+      margin-top: 1rem;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: #020617;
+      max-height: 260px;
+    }
+
+    body.light .image-large {
+      background: #e5e7eb;
+    }
+
+    .image-large img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
     footer {
       max-width: var(--max-width);
       margin: 0 auto;
@@ -650,7 +671,7 @@
           </p>
 
           <div class="highlight-layout">
-            <!-- Left: timeline and text (keep detailed) -->
+            <!-- Left: timeline and text -->
             <div class="highlight-main">
               <div class="timeline">
                 <div class="timeline-item">
@@ -702,22 +723,21 @@
               </div>
             </div>
 
-            <!-- Right: stock images column -->
+            <!-- Right: your images column -->
             <div class="highlight-images">
               <div class="image-row">
                 <div class="image-tile">
-                  <img src="assets/stock-sensors.jpg" alt="Stock image placeholder for sensors and instrumentation" />
+                  <img src="assets/sensors.png" alt="Sensors and instrumentation" />
                 </div>
                 <div class="image-tile">
-                  <img src="assets/stock-audio.jpg" alt="Stock image placeholder for audio signal or waveform" />
+                  <img src="assets/waveforms.png" alt="Signal waveforms and filtering" />
                 </div>
                 <div class="image-tile">
-                  <img src="assets/stock-powerlines.jpg" alt="Stock image placeholder for power transmission lines" />
+                  <img src="assets/transmission lines.png" alt="Power transmission lines" />
                 </div>
               </div>
               <p class="placeholder-note">
-                Replace these with stock images that match your projects, for example close ups of sensors,
-                audio waveforms, or transmission lines.
+                These images line up with the projects on the left: sensing, waveforms and filtering, and power systems.
               </p>
             </div>
           </div>
@@ -763,21 +783,13 @@
           </li>
         </ul>
 
-        <p class="placeholder-note">
-          Visual ideas: a stock photo of a business meeting or charts, a network or server diagram,
-          and a stylized terminal or dashboard.
-        </p>
-        <div class="image-row">
-          <div class="image-tile">
-            <img src="assets/stock-business.jpg" alt="Stock image placeholder for business or strategy discussion" />
-          </div>
-          <div class="image-tile">
-            <img src="assets/stock-network.jpg" alt="Stock image placeholder for network or server diagram" />
-          </div>
-          <div class="image-tile">
-            <img src="assets/stock-code.jpg" alt="Stock image placeholder for code or automation tools" />
-          </div>
+        <!-- One large SSH-related image -->
+        <div class="image-large">
+          <img src="assets/ssh.png" alt="SSH tunnel and server setup visualization" />
         </div>
+        <p class="placeholder-note">
+          Screenshot or visual that represents your SSH tunnel and Plex automation setup.
+        </p>
       </div>
     </section>
   </main>
