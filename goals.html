@@ -214,7 +214,7 @@
     .hero {
       margin-top: 1.75rem;
       margin-bottom: 2.25rem;
-      padding: 1.6rem 1.1rem 1.75rem;
+      padding: 1.6rem 1.1rem 1.6rem;
       border-radius: 22px;
       background: linear-gradient(
         135deg,
@@ -253,51 +253,19 @@
     .hero-inner {
       position: relative;
       z-index: 1;
-      display: grid;
-      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-      gap: 1.4rem;
-      align-items: center;
     }
 
     .hero-title {
       font-size: 1.8rem;
-      margin: 0 0 0.6rem;
+      margin: 0 0 0.4rem;
       letter-spacing: 0.01em;
     }
 
     .hero-subtitle {
       margin: 0;
-      font-size: 0.98rem;
+      font-size: 0.96rem;
       color: var(--text-muted);
-      max-width: 36rem;
-    }
-
-    .hero-list {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin: 0.4rem 0 0;
-      padding-left: 1.1rem;
-    }
-
-    .hero-highlight {
-      font-size: 0.84rem;
-      padding: 0.7rem 0.8rem;
-      border-radius: 14px;
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      color: var(--text-muted);
-      display: flex;
-      flex-direction: column;
-      gap: 0.45rem;
-    }
-
-    body.light .hero-highlight {
-      background: #f9fafb;
-    }
-
-    .hero-highlight strong {
-      color: var(--accent);
-      font-weight: 600;
+      max-width: 34rem;
     }
 
     .section {
@@ -370,23 +338,6 @@
       color: var(--text-muted);
     }
 
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.3rem;
-      margin-top: 0.35rem;
-      margin-bottom: 0.15rem;
-    }
-
-    .pill {
-      font-size: 0.78rem;
-      padding: 0.16rem 0.5rem;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--accent);
-      border: 1px solid rgba(56, 189, 248, 0.5);
-    }
-
     .list-compact {
       padding-left: 1rem;
       margin: 0.35rem 0 0.1rem;
@@ -407,16 +358,6 @@
 
     .project-list li {
       margin-bottom: 0.25rem;
-    }
-
-    .resume-link-inline {
-      color: var(--accent);
-      text-decoration: none;
-      border-bottom: 1px dotted rgba(56, 189, 248, 0.7);
-    }
-
-    .resume-link-inline:hover {
-      text-decoration: underline;
     }
 
     /* Timeline styles */
@@ -457,18 +398,37 @@
       color: var(--text-muted);
     }
 
-    /* Image rows for stock images */
-    .image-row {
-      margin-top: 1rem;
+    /* Highlight layout: text + images side by side */
+    .highlight-layout {
+      margin-top: 0.8rem;
       display: flex;
-      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .highlight-main {
+      flex: 1.6;
+      min-width: 0;
+    }
+
+    .highlight-images {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .image-row {
+      display: flex;
+      flex-direction: column;
       gap: 0.75rem;
     }
 
     .image-tile {
-      flex: 1 1 150px;
-      min-height: 120px;
-      max-height: 180px;
+      flex: 1 1 auto;
+      min-height: 80px;
+      max-height: 150px;
       border-radius: 12px;
       overflow: hidden;
       border: 1px solid rgba(148, 163, 184, 0.6);
@@ -489,7 +449,7 @@
     .placeholder-note {
       font-size: 0.82rem;
       color: var(--text-muted);
-      margin-top: 0.45rem;
+      margin-top: 0.25rem;
       font-style: italic;
     }
 
@@ -560,12 +520,16 @@
         flex-wrap: wrap;
       }
 
-      .hero-inner {
+      .card-grid {
         grid-template-columns: minmax(0, 1fr);
       }
 
-      .card-grid {
-        grid-template-columns: minmax(0, 1fr);
+      .highlight-layout {
+        flex-direction: column;
+      }
+
+      .highlight-images {
+        width: 100%;
       }
 
       footer {
@@ -614,94 +578,63 @@
     <!-- Hero -->
     <section class="hero fade-in">
       <div class="hero-inner">
-        <div>
-          <h2 class="hero-title">Goals and Work Portfolio</h2>
-          <p class="hero-subtitle">
-            A closer look at the projects that shaped my interests in sensing, signal processing,
-            and power systems, and how they connect to my long term plan to work on space related
-            engineering problems.
-          </p>
-          <ul class="hero-list">
-            <li>Section 1: Goals and work portfolio themes</li>
-            <li>Section 2: Cross disciplinary projects and knowledge</li>
-          </ul>
-        </div>
-        <div class="hero-highlight">
-          <strong>// Direction</strong>
-          <p>
-            I am currently employed in a software focused role, but my long term direction is to build on my
-            Electrical Engineering and astrophysics background. I want to work on systems where sensors, power,
-            and computation come together, with a particular interest in applications that support space exploration
-            and space based infrastructure.
-          </p>
-        </div>
+        <h2 class="hero-title">Goals and Work Portfolio</h2>
+        <p class="hero-subtitle">
+          A snapshot of the projects that shaped my interests in sensing, signal processing,
+          power systems, and how I think about problems beyond pure engineering.
+        </p>
       </div>
     </section>
 
-    <!-- 1. Goals and Work Portfolio -->
-    <section id="goals" class="section fade-in">
+    <!-- Goals and work portfolio -->
+    <section class="section fade-in">
       <div class="section-header">
         <div class="section-title">
           <span class="marker"></span>
-          <span>1. Goals and Work Portfolio</span>
+          <span>Goals</span>
         </div>
         <p class="section-caption">
-          How my projects and experience guide the type of electrical engineer I want to become.
+          How I want to grow as an engineer in the next few years.
         </p>
       </div>
 
       <div class="card-grid">
         <!-- Short term goals -->
         <article class="card">
-          <h3>Short term goals</h3>
-          <p>
-            In the next one to two years, I want to tighten the connection between the work I do day to day
-            and the core of Electrical Engineering.
-          </p>
+          <h3>Short term</h3>
           <ul class="list-compact">
             <li>
-              Deepen my understanding of sensing and instrumentation by refining projects like my automatic plant
-              watering system and infrared heart rate monitor, with better calibration, enclosure design, and robustness.
+              Refine sensing projects like my plant watering system and heart rate monitor with better calibration
+              and packaging.
             </li>
             <li>
-              Strengthen my signal processing skills by extending my audio filter designs into more advanced
-              filtering and real time implementations using tools such as MATLAB and embedded platforms.
+              Push my audio filter work into real time implementations using tools such as MATLAB and embedded boards.
             </li>
             <li>
-              Build on my ETAP power flow analysis work by taking on more complex transmission scenarios and
-              tying the results to real world reliability and stability concerns.
+              Extend my ETAP power flow studies to more complex transmission cases and relate them to reliability.
             </li>
             <li>
-              Continue to use software as a tool to support electrical work, for example by automating analysis,
-              simulations, or report generation for hardware and power focused projects.
+              Keep using software to automate analysis and reporting for hardware and power focused work.
             </li>
           </ul>
         </article>
 
         <!-- Long term goals -->
         <article class="card">
-          <h3>Long term goals</h3>
-          <p>
-            Longer term, I want my career to sit at the intersection of Electrical Engineering, software,
-            and space.
-          </p>
+          <h3>Long term</h3>
           <ul class="list-compact">
             <li>
-              Work on systems that involve sensing, power management, and communication in challenging environments,
-              such as remote or off planet applications.
+              Work on systems that combine sensing, power management, and communication in harsh or remote environments.
             </li>
             <li>
-              Leverage my astrophysics background to better understand the constraints and opportunities of
-              space based systems, and apply my engineering skillset to missions, infrastructure, or tools
-              that support space science.
+              Apply my Electrical Engineering and astrophysics background to projects that support space missions
+              or space based infrastructure.
             </li>
             <li>
-              Grow into roles where I can design and validate hardware and simulations, and build the
-              software tooling that other engineers use to understand system behavior and make decisions.
+              Design hardware and simulations and also build the tooling that other engineers use to understand systems.
             </li>
             <li>
-              Contribute to teams that value clear documentation, thoughtful trade offs, and a strong link
-              between theoretical models and measured performance.
+              Join teams that care about clear documentation and a tight link between theory and measured performance.
             </li>
           </ul>
         </article>
@@ -710,150 +643,129 @@
       <!-- Portfolio highlights with timeline -->
       <div class="section" style="margin-top: 1.5rem;">
         <div class="card">
-          <h3>Work portfolio highlights</h3>
+          <h3>Portfolio highlights</h3>
           <p>
-            These projects represent the kind of work I enjoy most: using sensors to understand the physical world,
-            shaping signals into something usable, and analyzing how power moves through a system.
+            These projects show how I like to work: measure the real world, shape signals into something useful,
+            and study how power and systems behave under load.
           </p>
 
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-marker"></div>
-              <div class="timeline-content">
-                <h4>Automatic plant watering and drainage system</h4>
-                <p>
-                  Designed a control system that monitors soil humidity and automatically manages watering and drainage.
-                  This combined sensor selection, analog interfacing, and control logic, and gave me hands on experience
-                  with reliability issues in a real environment.
-                </p>
+          <div class="highlight-layout">
+            <!-- Left: timeline and text (keep detailed) -->
+            <div class="highlight-main">
+              <div class="timeline">
+                <div class="timeline-item">
+                  <div class="timeline-marker"></div>
+                  <div class="timeline-content">
+                    <h4>Automatic plant watering and drainage system</h4>
+                    <p>
+                      Designed a control system that monitors soil humidity and automatically manages watering and drainage.
+                      This combined sensor selection, analog interfacing, and control logic, and gave me hands on experience
+                      with reliability issues in a real environment.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-marker"></div>
+                  <div class="timeline-content">
+                    <h4>Infrared and phototransistor heart rate monitor</h4>
+                    <p>
+                      Built a non invasive heart rate monitor using an infrared LED and phototransistor pair, then amplified
+                      and filtered the signal to extract a clean heart rate waveform. This sharpened my skills in analog
+                      front end design and noise reduction.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-marker"></div>
+                  <div class="timeline-content">
+                    <h4>Sound filtering and frequency shaping</h4>
+                    <p>
+                      Designed filter circuits and signal processing chains to remove unwanted noise and emphasize
+                      desired frequency bands. This showed how design choices in filters directly affect which
+                      information is preserved or lost in a signal.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-marker"></div>
+                  <div class="timeline-content">
+                    <h4>Power flow analysis with ETAP</h4>
+                    <p>
+                      Performed power flow and contingency analysis on transmission systems using ETAP to evaluate
+                      system loading, volatility, and stability under different operating conditions.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div class="timeline-item">
-              <div class="timeline-marker"></div>
-              <div class="timeline-content">
-                <h4>Infrared and phototransistor heart rate monitor</h4>
-                <p>
-                  Built a non invasive heart rate monitor using an infrared LED and phototransistor pair, then amplified
-                  and filtered the signal to extract a clean heart rate waveform. This sharpened my skills in analog
-                  front end design and noise reduction.
-                </p>
+            <!-- Right: stock images column -->
+            <div class="highlight-images">
+              <div class="image-row">
+                <div class="image-tile">
+                  <img src="assets/stock-sensors.jpg" alt="Stock image placeholder for sensors and instrumentation" />
+                </div>
+                <div class="image-tile">
+                  <img src="assets/stock-audio.jpg" alt="Stock image placeholder for audio signal or waveform" />
+                </div>
+                <div class="image-tile">
+                  <img src="assets/stock-powerlines.jpg" alt="Stock image placeholder for power transmission lines" />
+                </div>
               </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-marker"></div>
-              <div class="timeline-content">
-                <h4>Sound filtering and frequency shaping</h4>
-                <p>
-                  Designed filter circuits and signal processing chains to remove unwanted noise and emphasize
-                  desired frequency bands. This showed how design choices in filters directly affect which
-                  information is preserved or lost in a signal.
-                </p>
-              </div>
-            </div>
-
-            <div class="timeline-item">
-              <div class="timeline-marker"></div>
-              <div class="timeline-content">
-                <h4>Power flow analysis with ETAP</h4>
-                <p>
-                  Performed power flow and contingency analysis on transmission systems using ETAP to evaluate
-                  system loading, volatility, and stability under different operating conditions.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Stock image area for portfolio section -->
-          <p class="placeholder-note">
-            Visual area for this section. Replace the image sources below with stock images that match these themes
-            for example sensors and PCBs, an audio waveform, and transmission lines.
-          </p>
-          <div class="image-row">
-            <div class="image-tile">
-              <img src="assets/stock-sensors.jpg" alt="Stock image placeholder for sensors and instrumentation" />
-            </div>
-            <div class="image-tile">
-              <img src="assets/stock-audio.jpg" alt="Stock image placeholder for audio signal or waveform" />
-            </div>
-            <div class="image-tile">
-              <img src="assets/stock-powerlines.jpg" alt="Stock image placeholder for power transmission lines" />
+              <p class="placeholder-note">
+                Replace these with stock images that match your projects, for example close ups of sensors,
+                audio waveforms, or transmission lines.
+              </p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 2. Cross disciplinary projects and knowledge -->
-    <section id="courses" class="section fade-in">
+    <!-- Cross disciplinary projects -->
+    <section class="section fade-in">
       <div class="section-header">
         <div class="section-title">
           <span class="marker"></span>
-          <span>2. Cross Disciplinary Projects and Knowledge</span>
+          <span>Cross disciplinary projects</span>
         </div>
         <p class="section-caption">
-          How business, anatomy, and systems thinking round out my engineering skill set.
+          Where business and systems thinking meet engineering work.
         </p>
       </div>
 
       <div class="card">
-        <h3>Overview</h3>
+        <h3>Business and systems view</h3>
         <p>
-          Alongside Electrical Engineering, I have studied Business Essentials for Technology Entrepreneurs I and II
-          and Anatomy I and II. These courses widened how I look at problems. They gave me language for markets,
-          customers, and strategy, and also a better understanding of how complex biological systems behave under
-          constraints.
-        </p>
-        <p>
-          This mix of business, life science, and engineering helps me switch between different views of the same
-          problem: the technical details, the human body that might interact with a device, and the market or
-          organization that has to adopt it.
+          Courses like Business Essentials for Technology Entrepreneurs I and II gave me practice looking at
+          technology from the outside in: markets, customers, and strategy, not just circuits and code.
         </p>
 
-        <h3 style="margin-top:1.1rem;">Selected cross disciplinary work</h3>
         <ul class="project-list">
           <li>
-            <strong>Tom.com and iQmetrix case study and SWOT analysis:</strong>
-            Completed a detailed case study that compared Tom.com and iQmetrix, focusing on their strategic positioning,
-            business models, and technology. The SWOT analysis required looking at strengths and weaknesses inside the
-            company as well as external market forces, which matches how engineering decisions are shaped by both
-            internal capabilities and outside constraints.
+            <strong>Tom.com and iQmetrix SWOT case study:</strong>
+            Analyzed both companies in terms of strengths, weaknesses, opportunities, and threats, tying
+            technology choices to revenue models, partnerships, and market positioning.
           </li>
           <li>
-            <strong>Business Essentials for Technology Entrepreneurs I and II:</strong>
-            Applied concepts such as value propositions, customer segments, and basic financial thinking to technology
-            driven companies. This gave me practice in explaining technical ideas in ways that make sense to non technical
-            stakeholders and in thinking about how a project can be viable beyond the lab.
+            <strong>Business Essentials for Technology Entrepreneurs:</strong>
+            Worked with ideas like value propositions, customer segments, and simple financial thinking,
+            and practiced explaining technical work in clear business language.
           </li>
           <li>
             <strong>Remote secure SSH tunnel and Plex automation:</strong>
-            Set up a remote secure SSH tunnel to a Linux PC server that automatically indexes and downloads media through
-            a torrent client, then makes it available through a Plex snap package. This project combined networking,
-            security, automation workflows, and user experience, and it showed how infrastructure decisions affect how
-            people actually use a system.
-          </li>
-          <li>
-            <strong>Anatomy I and II:</strong>
-            Studied human anatomy with a focus on how different systems work together under real constraints. This helps
-            when thinking about devices that interact with the body, like the infrared heart rate monitor, and encourages
-            a systems level view of feedback, limits, and safety.
+            Set up a remote secure SSH tunnel to a Linux PC server that automatically indexes and downloads media,
+            then serves it through a Plex snap package. This pulled together networking, security, automation,
+            and user experience into one system.
           </li>
         </ul>
 
-        <p>
-          For more detail on my academic and project background, including additional work not listed here,
-          you can also refer to my resume:
-          <a class="resume-link-inline" href="assets/JefferyEngineeringResumeV1.1.pdf" target="_blank">
-            open resume (PDF)
-          </a>.
-        </p>
-
-        <!-- Stock image area for cross disciplinary section -->
         <p class="placeholder-note">
-          Visual area for this section. Replace the image sources below with stock images such as a business meeting
-          or charts, a network diagram or terminal, and a simplified anatomy illustration to reflect this broader
-          knowledge.
+          Visual ideas: a stock photo of a business meeting or charts, a network or server diagram,
+          and a stylized terminal or dashboard.
         </p>
         <div class="image-row">
           <div class="image-tile">
@@ -863,7 +775,7 @@
             <img src="assets/stock-network.jpg" alt="Stock image placeholder for network or server diagram" />
           </div>
           <div class="image-tile">
-            <img src="assets/stock-anatomy.jpg" alt="Stock image placeholder for anatomy or human body diagram" />
+            <img src="assets/stock-code.jpg" alt="Stock image placeholder for code or automation tools" />
           </div>
         </div>
       </div>
