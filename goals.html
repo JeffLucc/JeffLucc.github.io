@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Goals and Portfolio | Jeffery Lucchetta</title>
-//
+
   <style>
     :root {
       --bg: #0f172a;
@@ -427,8 +427,6 @@
 
     .image-tile {
       flex: 1 1 auto;
-      min-height: 80px;
-      max-height: 150px;
       border-radius: 12px;
       overflow: hidden;
       border: 1px solid rgba(148, 163, 184, 0.6);
@@ -441,16 +439,8 @@
 
     .image-tile img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
       display: block;
-    }
-
-    .placeholder-note {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      margin-top: 0.25rem;
-      font-style: italic;
     }
 
     /* Large image for last section */
@@ -460,7 +450,6 @@
       overflow: hidden;
       border: 1px solid rgba(148, 163, 184, 0.6);
       background: #020617;
-      max-height: 260px;
     }
 
     body.light .image-large {
@@ -469,8 +458,7 @@
 
     .image-large img {
       width: 100%;
-      height: 100%;
-      object-fit: cover;
+      height: auto;
       display: block;
     }
 
@@ -736,9 +724,6 @@
                   <img src="assets/transmission lines.png" alt="Power transmission lines" />
                 </div>
               </div>
-              <p class="placeholder-note">
-                These images line up with the projects on the left: sensing, waveforms and filtering, and power systems.
-              </p>
             </div>
           </div>
         </div>
@@ -787,9 +772,6 @@
         <div class="image-large">
           <img src="assets/ssh.png" alt="SSH tunnel and server setup visualization" />
         </div>
-        <p class="placeholder-note">
-          Screenshot or visual that represents your SSH tunnel and Plex automation setup.
-        </p>
       </div>
     </section>
   </main>
