@@ -457,6 +457,42 @@
       color: var(--text-muted);
     }
 
+    /* Image rows for stock images */
+    .image-row {
+      margin-top: 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .image-tile {
+      flex: 1 1 150px;
+      min-height: 120px;
+      max-height: 180px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: #020617;
+    }
+
+    body.light .image-tile {
+      background: #e5e7eb;
+    }
+
+    .image-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .placeholder-note {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 0.45rem;
+      font-style: italic;
+    }
+
     footer {
       max-width: var(--max-width);
       margin: 0 auto;
@@ -563,7 +599,7 @@
         >
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M8.339 17V10.667H5.667V17H8.339M7.003 9.56C7.927 9.56 8.667 8.8 8.667 7.893C8.667 6.987 7.927 6.227 7.003 6.227C6.08 6.227 5.339 6.987 5.339 7.893C5.339 8.8 6.08 9.56 7.003 9.56M18.667 17V13.227C18.667 11.227 17.56 10.227 16 10.227C14.773 10.227 14 10.987 13.667 11.56V10.667H11V17H13.667V13.667C13.667 12.667 14.227 12 15.227 12C16.227 12 16.667 12.667 16.667 13.667V17H18.667Z" />
-        </svg>
+          </svg>
         </a>
 
         <button class="theme-toggle" id="themeToggle" type="button">
@@ -581,9 +617,9 @@
         <div>
           <h2 class="hero-title">Goals and Work Portfolio</h2>
           <p class="hero-subtitle">
-            This page highlights the projects that shaped my interests in sensing, signal processing,
-            and power systems, and explains how I plan to refocus my career toward Electrical Engineering
-            and, long term, toward applications in space.
+            A closer look at the projects that shaped my interests in sensing, signal processing,
+            and power systems, and how they connect to my long term plan to work on space related
+            engineering problems.
           </p>
           <ul class="hero-list">
             <li>Section 1: Goals and work portfolio themes</li>
@@ -660,7 +696,7 @@
               that support space science.
             </li>
             <li>
-              Grow into roles where I can design and validate hardware and simulations, but also build the
+              Grow into roles where I can design and validate hardware and simulations, and build the
               software tooling that other engineers use to understand system behavior and make decisions.
             </li>
             <li>
@@ -723,10 +759,26 @@
                 <h4>Power flow analysis with ETAP</h4>
                 <p>
                   Performed power flow and contingency analysis on transmission systems using ETAP to evaluate
-                  system loading, volatility, and stability under different operating conditions. This reinforced
-                  how modeling and simulation guide practical decisions in power engineering.
+                  system loading, volatility, and stability under different operating conditions.
                 </p>
               </div>
+            </div>
+          </div>
+
+          <!-- Stock image area for portfolio section -->
+          <p class="placeholder-note">
+            Visual area for this section. Replace the image sources below with stock images that match these themes
+            for example sensors and PCBs, an audio waveform, and transmission lines.
+          </p>
+          <div class="image-row">
+            <div class="image-tile">
+              <img src="assets/stock-sensors.jpg" alt="Stock image placeholder for sensors and instrumentation" />
+            </div>
+            <div class="image-tile">
+              <img src="assets/stock-audio.jpg" alt="Stock image placeholder for audio signal or waveform" />
+            </div>
+            <div class="image-tile">
+              <img src="assets/stock-powerlines.jpg" alt="Stock image placeholder for power transmission lines" />
             </div>
           </div>
         </div>
@@ -741,16 +793,16 @@
           <span>2. Course Projects and Papers</span>
         </div>
         <p class="section-caption">
-          Examples of academic work that connect Electrical Engineering, software, and analysis.
+          Academic work that connects Electrical Engineering concepts with analysis and software tools.
         </p>
       </div>
 
       <div class="card">
         <h3>Overview</h3>
         <p>
-          My course projects build on the same themes as my personal work: sensing, signal processing, and power systems.
-          They often pair simulation and analysis with hardware level thinking, and many of them use software tools
-          to validate or automate the results.
+          My course projects build on the same areas as my personal work and give structured practice in
+          circuit design, signal processing, and power systems. Many of them pair simulations with data
+          analysis or reporting.
         </p>
         <p>
           For full descriptions, including course codes, tools used, and outcomes, please visit the course projects
@@ -775,10 +827,23 @@
             and understand how operating conditions affect system margins.
           </li>
         </ul>
-        <p>
-          Together, these projects show how I connect coursework to practical engineering problems and how I
-          use both hardware knowledge and software tooling to reason about complex systems.
+
+        <!-- Stock image area for course projects section -->
+        <p class="placeholder-note">
+          Visual area for this section. Replace the image sources below with stock images such as a lab bench,
+          a simulation plot, or code on screen to represent course work.
         </p>
+        <div class="image-row">
+          <div class="image-tile">
+            <img src="assets/stock-lab.jpg" alt="Stock image placeholder for electronics lab bench" />
+          </div>
+          <div class="image-tile">
+            <img src="assets/stock-simulation.jpg" alt="Stock image placeholder for engineering simulation or plots" />
+          </div>
+          <div class="image-tile">
+            <img src="assets/stock-code.jpg" alt="Stock image placeholder for code or analysis tools" />
+          </div>
+        </div>
       </div>
     </section>
   </main>
