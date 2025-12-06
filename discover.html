@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Discover Myself | Jeffery Lucchetta</title>
+
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-elevated: #111827;
+      --bg-soft: #020617;
+      --text: #e5e7eb;
+      --text-muted: #9ca3af;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.12);
+      --border-subtle: #1f2933;
+      --card-radius: 14px;
+      --max-width: 960px;
+    }
+
+    body.light {
+      --bg: #f4f4f5;
+      --bg-elevated: #ffffff;
+      --bg-soft: #e5e7eb;
+      --text: #111827;
+      --text-muted: #4b5563;
+      --accent: #0ea5e9;
+      --accent-soft: rgba(14, 165, 233, 0.08);
+      --border-subtle: #e5e7eb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, var(--bg-elevated) 0, var(--bg-soft) 55%);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.25rem 3rem;
+    }
+
+    header {
+      padding: 1.25rem 1.25rem 0.5rem;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(
+        to bottom,
+        rgba(15, 23, 42, 0.92),
+        rgba(15, 23, 42, 0.76),
+        transparent
+      );
+    }
+
+    body.light header {
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.96),
+        rgba(244, 244, 245, 0.9),
+        transparent
+      );
+      border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .brand-block {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .avatar-placeholder {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 2px solid var(--accent-soft);
+      overflow: hidden;
+      background: #020617;
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.9);
+      flex-shrink: 0;
+    }
+
+    .avatar-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .brand-text h1 {
+      margin: 0;
+      font-size: 1.1rem;
+      font-weight: 650;
+    }
+
+    .brand-text p {
+      margin: 2px 0 0;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.35rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease,
+        transform 0.09s ease;
+    }
+
+    nav a:hover {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border-color: rgba(148, 163, 184, 0.4);
+      transform: translateY(-1px);
+    }
+
+    nav a.current {
+      border-color: rgba(56, 189, 248, 0.7);
+      color: var(--accent);
+      background: rgba(15, 23, 42, 0.8);
+    }
+
+    body.light nav a.current {
+      background: #e0f2fe;
+    }
+
+    .nav-social {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.35rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: background 0.2s ease, border-color 0.2s ease,
+        transform 0.09s ease, box-shadow 0.18s ease;
+    }
+
+    .nav-social svg {
+      display: block;
+      width: 20px;
+      height: 20px;
+      fill: var(--text-muted);
+      transition: fill 0.2s ease;
+    }
+
+    .nav-social:hover {
+      background: var(--accent-soft);
+      border-color: rgba(148, 163, 184, 0.5);
+      box-shadow: 0 0 0 1px rgba(56, 189, 248, 0.35);
+      transform: translateY(-1px);
+    }
+
+    .nav-social:hover svg {
+      fill: var(--accent);
+    }
+
+    .theme-toggle {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      background: rgba(15, 23, 42, 0.7);
+      color: var(--text);
+      padding: 0.35rem 0.75rem;
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease,
+        transform 0.08s ease;
+    }
+
+    body.light .theme-toggle {
+      background: #ffffffdd;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .theme-toggle span.icon {
+      font-size: 1rem;
+    }
+
+    .hero {
+      margin-top: 1.75rem;
+      margin-bottom: 2.25rem;
+      padding: 1.6rem 1.1rem 1.8rem;
+      border-radius: 22px;
+      background: linear-gradient(
+        135deg,
+        var(--accent-soft),
+        rgba(15, 23, 42, 0.96)
+      );
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.7);
+      position: relative;
+      overflow: hidden;
+    }
+
+    body.light .hero {
+      background: linear-gradient(
+        135deg,
+        var(--accent-soft),
+        #ffffff
+      );
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.16);
+      border-color: rgba(148, 163, 184, 0.4);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        circle at 120% -10%,
+        rgba(56, 189, 248, 0.25),
+        transparent 50%
+      );
+      pointer-events: none;
+      opacity: 0.9;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.2fr);
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-size: 1.8rem;
+      margin: 0 0 0.4rem;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-subtitle {
+      margin: 0;
+      font-size: 0.96rem;
+      color: var(--text-muted);
+      max-width: 32rem;
+    }
+
+    .hero-side {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .hero-side img {
+      width: 100%;
+      max-width: 220px;
+      border-radius: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      display: block;
+    }
+
+    .section {
+      margin-bottom: 2.25rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-title span.marker {
+      width: 7px;
+      height: 18px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25);
+    }
+
+    .section-caption {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .card {
+      background: linear-gradient(
+        145deg,
+        rgba(15, 23, 42, 0.98),
+        rgba(15, 23, 42, 0.93)
+      );
+      border-radius: var(--card-radius);
+      border: 1px solid var(--border-subtle);
+      padding: 1.2rem 1.1rem 1.1rem;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.65);
+      position: relative;
+      overflow: hidden;
+    }
+
+    body.light .card {
+      background: #ffffff;
+      box-shadow: 0 14px 24px rgba(15, 23, 42, 0.12);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 0.35rem;
+      font-size: 1.05rem;
+    }
+
+    .card p {
+      margin: 0.2rem 0 0.25rem;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
+      gap: 1rem;
+    }
+
+    .list-compact {
+      padding-left: 1rem;
+      margin: 0.35rem 0 0.1rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .list-compact li {
+      margin-bottom: 0.25rem;
+    }
+
+    .inline-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.45rem;
+    }
+
+    .pill {
+      font-size: 0.8rem;
+      padding: 0.18rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--text-muted);
+    }
+
+    body.light .pill {
+      background: #f9fafb;
+    }
+
+    .quote-block {
+      margin-top: 0.5rem;
+      padding-left: 0.85rem;
+      border-left: 2px solid rgba(148, 163, 184, 0.9);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    footer {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 1.5rem 1.25rem 2.5rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      border-top: 1px solid rgba(15, 23, 42, 0.8);
+    }
+
+    .footer-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-icon-link {
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-icon-link svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--accent);
+      transition: transform 0.15s ease, filter 0.15s ease;
+    }
+
+    .footer-icon-link:hover svg {
+      transform: translateY(-1px) scale(1.05);
+      filter: drop-shadow(0 0 4px rgba(56, 189, 248, 0.5));
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero.fade-in {
+      transform: translateY(10px) scale(0.99);
+      transition: opacity 0.55s ease-out, transform 0.55s ease-out;
+    }
+
+    .hero.fade-in.visible {
+      transform: translateY(0) scale(1);
+    }
+
+    @media (max-width: 768px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .hero-inner {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-side {
+        justify-content: flex-start;
+      }
+
+      .card-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      footer {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="brand-block">
+        <div class="avatar-placeholder">
+          <img src="assets/headshotphoto.jpg" alt="Photo of Jeffery Lucchetta" />
+        </div>
+        <div class="brand-text">
+          <h1>Jeffery Lucchetta</h1>
+          <p>Electrical Engineering Student and Software Developer in Training</p>
+        </div>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="goals.html">Goals and Portfolio</a>
+        <a href="discover.html" class="current">Discover Myself</a>
+
+        <a
+          class="nav-social"
+          href="https://www.linkedin.com/in/jefferylucchetta/"
+          target="_blank"
+          aria-label="LinkedIn profile"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M8.339 17V10.667H5.667V17H8.339M7.003 9.56C7.927 9.56 8.667 8.8 8.667 7.893C8.667 6.987 7.927 6.227 7.003 6.227C6.08 6.227 5.339 6.987 5.339 7.893C5.339 8.8 6.08 9.56 7.003 9.56M18.667 17V13.227C18.667 11.227 17.56 10.227 16 10.227C14.773 10.227 14 10.987 13.667 11.56V10.667H11V17H13.667V13.667C13.667 12.667 14.227 12 15.227 12C16.227 12 16.667 12.667 16.667 13.667V17H18.667Z" />
+          </svg>
+        </a>
+
+        <button class="theme-toggle" id="themeToggle" type="button">
+          <span class="icon" id="themeIcon">🌙</span>
+          <span id="themeLabel">Dark mode</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero fade-in">
+      <div class="hero-inner">
+        <div>
+          <h2 class="hero-title">Discovering how I work, learn, and think.</h2>
+          <p class="hero-subtitle">
+            A look behind the projects at the childhood interests, values, and habits that shaped
+            my path into Electrical Engineering and my goal of working in the space industry.
+          </p>
+        </div>
+        <div class="hero-side">
+          <img src="assets/customPCbuild.jpg" alt="Custom PC build that reflects my early interests" />
+        </div>
+      </div>
+    </section>
+
+    <!-- Origins: childhood and major choice -->
+    <section class="section fade-in" id="origins">
+      <div class="section-header">
+        <div class="section-title">
+          <span class="marker"></span>
+          <span>Where it started</span>
+        </div>
+        <p class="section-caption">
+          Childhood interests and why engineering felt like the right language.
+        </p>
+      </div>
+
+      <div class="card-grid">
+        <article class="card">
+          <h3>Early curiosities</h3>
+          <p>
+            When I was younger, I spent a lot of time around hardware. I built computers,
+            got interested in circuit board design and the etching process, and put together
+            a wireless repeater when I was about fourteen. Seeing something physical work
+            because of choices I made in the design felt natural to me.
+          </p>
+          <ul class="list-compact">
+            <li>Building and upgrading PCs instead of just using them.</li>
+            <li>Thinking about how circuits were laid out, not just what they powered.</li>
+            <li>Experimenting with networking through a home built repeater.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <h3>Why engineering felt right</h3>
+          <p>
+            Engineering appealed to me because it connects theory to real world application.
+            I like seeing ideas land in hardware, systems, and tools that people actually use.
+          </p>
+          <p>
+            Electrical Engineering stood out because it is versatile. It lets me move toward
+            computer focused work or more traditional electrical work while still staying close
+            to the things I cared about as a kid.
+          </p>
+          <div class="inline-pill-row">
+            <span class="pill">Real world impact</span>
+            <span class="pill">Hands on systems</span>
+            <span class="pill">Room to pivot</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Why EE and where I am heading -->
+    <section class="section fade-in" id="path">
+      <div class="section-header">
+        <div class="section-title">
+          <span class="marker"></span>
+          <span>Why Electrical Engineering and where I am heading</span>
+        </div>
+        <p class="section-caption">
+          Connecting versatility, signal processing, and space focused goals.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Versatility that matches my interests</h3>
+        <p>
+          Electrical Engineering lets me sit in the overlap of circuits, computing, and systems.
+          It lines up with my early interest in computers and board design, but it does not lock me
+          into one narrow path. I can work closer to computer engineering, closer to power systems,
+          or in the signal processing space where a lot of interesting problems live.
+        </p>
+
+        <h3 style="margin-top: 0.9rem;">Signal processing and space</h3>
+        <p>
+          Signal processing turned out to be more fun than I expected. I like seeing how filters and
+          transforms can pull structure out of messy data. At an MDA open house, I got to see work
+          around Canadarm projects and how sensing, control, and engineering come together in space
+          applications. That felt like my interests and career goals overlapping in a very direct way.
+        </p>
+
+        <h3 style="margin-top: 0.9rem;">Long term direction</h3>
+        <p>
+          Long term, I want a wide range of engineering experience behind me, across hardware, systems,
+          and tooling. The goal is to work directly in the space industry or on systems that support it.
+          I want to bring together my Electrical Engineering background, my early interest in space, and
+          the practical mindset I have developed through projects and work.
+        </p>
+      </div>
+    </section>
+
+    <!-- Interests and strengths -->
+    <section class="section fade-in" id="interests">
+      <div class="section-header">
+        <div class="section-title">
+          <span class="marker"></span>
+          <span>Interests and strengths</span>
+        </div>
+        <p class="section-caption">
+          What I enjoy and how I show up on a team.
+        </p>
+      </div>
+
+      <div class="card-grid">
+        <article class="card">
+          <h3>What I enjoy doing</h3>
+          <p>
+            I am very in tune with the computer building space and the business that surrounds it.
+            I pay attention to hardware specs, performance, and how parts fit together as a full build.
+          </p>
+          <p>
+            Outside of that, I enjoy going to the gym. It is satisfying to see numbers move in the right
+            direction and feel the progress in a tangible way. I also play video games in my downtime
+            which keeps me connected to the user side of the hardware I care about.
+          </p>
+          <div class="inline-pill-row">
+            <span class="pill">PC building and hardware</span>
+            <span class="pill">Performance and tuning</span>
+            <span class="pill">Gym and progression</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>How I contribute to a team</h3>
+          <p>
+            Communication is one of my biggest strengths. I like being the person who can bring a team
+            together, keep conversations open, and make sure everyone understands what we are doing.
+          </p>
+          <p>
+            I am aware that I may not always be the strongest technical person in the room, and I am fine
+            with that. A good team is not made only of star players. You also need people who can connect
+            ideas, keep things grounded, and make sure everyone is pulling in the same direction.
+          </p>
+          <div class="inline-pill-row">
+            <span class="pill">Connector</span>
+            <span class="pill">Honest feedback</span>
+            <span class="pill">Team focused</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Values, personality, and learning philosophy -->
+    <section class="section fade-in" id="values">
+      <div class="section-header">
+        <div class="section-title">
+          <span class="marker"></span>
+          <span>Values, personality, and learning</span>
+        </div>
+        <p class="section-caption">
+          How I try to act, how people see me, and how I think about growth.
+        </p>
+      </div>
+
+      <div class="card-grid">
+        <article class="card">
+          <h3>What matters to me</h3>
+          <p>
+            Honesty and integrity are important to me. I care about being able to take accountability
+            when something goes wrong, to be upfront about it, and to treat it as a chance to learn
+            rather than something to hide.
+          </p>
+          <p>
+            I would rather be clear about what I know and what I do not know than overpromise.
+            That mindset carries into how I work, communicate, and ask for help.
+          </p>
+          <div class="inline-pill-row">
+            <span class="pill">Honesty</span>
+            <span class="pill">Integrity</span>
+            <span class="pill">Ownership</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>How people see me and how I learn</h3>
+          <p>
+            Friends would probably describe me as talkative, quirky, and a bit aloof at times.
+            I take that as a sign that I bring some energy into conversations while also thinking
+            in my own way about problems.
+          </p>
+          <div class="quote-block">
+            <strong>My view on learning:</strong> learning has no limit, and most learning is done before you start,
+            when you decide to open yourself up to learn.
+          </div>
+          <p>
+            That shows up in how I approach new tools, projects, and roles. Once I decide to lean into
+            something, I am ready to adapt, listen, and build from there.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2025 Jeffery Lucchetta</span>
+    <span class="footer-right">
+      Built with HTML, CSS, and JavaScript
+      <a
+        class="footer-icon-link"
+        href="https://www.linkedin.com/in/jefferylucchetta/"
+        target="_blank"
+        aria-label="LinkedIn profile"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M8.339 17V10.667H5.667V17H8.339M7.003 9.56C7.927 9.56 8.667 8.8 8.667 7.893C8.667 6.987 7.927 6.227 7.003 6.227C6.08 6.227 5.339 6.987 5.339 7.893C5.339 8.8 6.08 9.56 7.003 9.56M18.667 17V13.227C18.667 11.227 17.56 10.227 16 10.227C14.773 10.227 14 10.987 13.667 11.56V10.667H11V17H13.667V13.667C13.667 12.667 14.227 12 15.227 12C16.227 12 16.667 12.667 16.667 13.667V17H18.667Z" />
+      </a>
+    </span>
+  </footer>
+
+  <script>
+    (function () {
+      const storedTheme = localStorage.getItem("jl-theme");
+      if (storedTheme === "light") {
+        document.body.classList.add("light");
+      }
+    })();
+
+    const themeToggle = document.getElementById("themeToggle");
+    const themeLabel = document.getElementById("themeLabel");
+    const themeIcon = document.getElementById("themeIcon");
+
+    function updateThemeUI() {
+      const isLight = document.body.classList.contains("light");
+      themeLabel.textContent = isLight ? "Light mode" : "Dark mode";
+      themeIcon.textContent = isLight ? "☀️" : "🌙";
+    }
+
+    updateThemeUI();
+
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("light");
+      const isLight = document.body.classList.contains("light");
+      localStorage.setItem("jl-theme", isLight ? "light" : "dark");
+      updateThemeUI();
+    });
+
+    const fadeElements = document.querySelectorAll(".fade-in");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    fadeElements.forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
